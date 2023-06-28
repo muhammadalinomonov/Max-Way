@@ -12,6 +12,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -22,7 +23,6 @@ import androidx.compose.ui.res.painterResource
 import cafe.adriel.voyager.hilt.getViewModel
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
-import org.orbitmvi.orbit.compose.collectAsState
 import uz.gita.my_max_way_uz.R
 import uz.gita.my_max_way_uz.data.model.CategoryData
 import uz.gita.my_max_way_uz.navigation.AppScreen
@@ -48,9 +48,9 @@ class HomeScreen : Tab, AppScreen() {
     @Composable
     override fun Content() {
         val viewModel: HomeContact.ViewModel = getViewModel<HomeViewModel>()
-        val uiState = viewModel.collectAsState()
+        val uiState = viewModel.uiState.collectAsState().value
 
-        HomeScreenContent(uiState.value, viewModel::onEventDispatcher)
+        HomeScreenContent(uiState, viewModel::onEventDispatcher)
     }
 
 
@@ -60,33 +60,25 @@ class HomeScreen : Tab, AppScreen() {
         uiState: HomeContact.UiState,
         onEventDispatcher: (HomeContact.Intent) -> Unit
     ) {
-        var categories by remember { mutableStateOf(mutableListOf<String>()) }
-        var foodsList by remember { mutableStateOf(mutableListOf<CategoryData>()) }
+        var foodsList by remember { mutableStateOf(listOf<CategoryData>()) }
 
         var search by remember { mutableStateOf("") }
 
-
 //        onEventDispatcher(HomeContact.Intent.Load)
-        when (uiState) {
-            is HomeContact.UiState.Categories -> {
-                categories =
-                    uiState.categories as ArrayList<String>
-            }
 
-            is HomeContact.UiState.Foods -> {
-                foodsList =
-                    uiState.foodList as ArrayList<CategoryData>
-            }
-
-            HomeContact.UiState.Loading -> {}
-        }
 //        var selectedCategories by remember { mutableStateOf(mutableListOf<String>()) }
 
+        foodsList = uiState.foods
 
-        val selectedCategories = arrayListOf<String>()
+        val selectedCategories by remember {
+            mutableStateOf(arrayListOf<String>())
+        }
+
+
+
         Surface(modifier = Modifier.fillMaxSize()) {
 
-            val categories = foodsList.map { it.name }
+//            val categories = foodsList.map { it.name }
 
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 item {
@@ -96,35 +88,36 @@ class HomeScreen : Tab, AppScreen() {
                     }
                 }
                 item {
+                    Log.d("AAAAA", uiState.categories.size.toString())
                     LazyRow {
-                        items(categories.size) {
-
-
+                        items(uiState.categories.size) {
                             Button(
                                 onClick = {
-                                    if (selectedCategories.contains(foodsList[it].name)) {
-                                        selectedCategories.remove(foodsList[it].name)
+                                    if (selectedCategories.contains(uiState.categories[it])) {
+                                        selectedCategories.remove(uiState.categories[it])
                                     } else {
-                                        selectedCategories.add(foodsList[it].name)
+                                        selectedCategories.add(uiState.categories[it])
                                     }
 
                                     onEventDispatcher(
                                         HomeContact.Intent.SelectCategories(selectedCategories)
                                     )
                                 },
-                                colors = if (selectedCategories.contains(foodsList[it].name)) ButtonDefaults.buttonColors(
-                                    Color.Blue
-                                ) else ButtonDefaults.buttonColors(
-                                    Color(0xFF9E9B9B)
-                                )
+
+                                colors = if (selectedCategories.contains(uiState.categories[it])) {
+                                    ButtonDefaults.buttonColors(Color.Blue)
+                                } else
+                                    ButtonDefaults.buttonColors(Color(0xFF9E9B9B))
                             ) {
-                                Text(text = foodsList[it].name)
+                                Text(text = uiState.categories[it])
+//                                Text(text = foodsList[it].name)
                             }
                         }
                     }
                 }
 
-                items(foodsList) { categoryData ->
+                Log.d("TTT", "screen -> " + uiState.foods.toString())
+                items(uiState.foods) { categoryData ->
                     Column {
                         Text(text = categoryData.name)
                         categoryData.items.forEach { it ->

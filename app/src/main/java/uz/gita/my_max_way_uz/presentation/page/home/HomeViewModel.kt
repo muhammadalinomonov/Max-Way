@@ -4,12 +4,11 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.orbitmvi.orbit.syntax.simple.intent
-import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 import uz.gita.my_max_way_uz.domain.usecase.HomeUseCase
 import javax.inject.Inject
@@ -20,7 +19,9 @@ class HomeViewModel @Inject constructor(
     private val useCase: HomeUseCase
 ) : HomeContact.ViewModel, ViewModel() {
     override val container =
-        container<HomeContact.UiState, HomeContact.SideEffect.HasError>(HomeContact.UiState.Loading)
+        container<HomeContact.UiState, HomeContact.SideEffect.HasError>(HomeContact.UiState())
+
+    override val uiState = MutableStateFlow(HomeContact.UiState())
 
     init {
         onEventDispatcher(HomeContact.Intent.Load)
@@ -31,34 +32,31 @@ class HomeViewModel @Inject constructor(
         when (intent) {
             HomeContact.Intent.Load -> {
                 viewModelScope.launch {
-
-                    useCase.getCategories().onEach {
-                        it.onSuccess {
-                            Log.d("SSS", "getCategories $it")
-                            intent {
-                                reduce {
-                                    HomeContact.UiState.Categories(list.map { it })
-                                }
+                    useCase.getFoodsByCategory("", emptyList()).onEach { result ->
+                        result.onSuccess { list ->
+                            uiState.update {
+                                it.copy(foods = list)
                             }
-                        }
-                    }.launchIn(viewModelScope)
-                    delay(1000)
-                    useCase.getFoodsByCategory("", emptyList()).onEach {
-                        it.onSuccess { list ->
-                            Log.d("SSS", "getFoodsByCategory $list")
-                            intent {
-                                reduce {
-                                    HomeContact.UiState.Categories(list.map { it.name })
-                                }
-                            }
-                            intent{
-                                reduce {
-                                    HomeContact.UiState.Foods(list)
-                                }
-                            }
+                            Log.d("TTT", "view model ${uiState.value.foods}")
                         }
 
                     }.launchIn(viewModelScope)
+
+                    useCase.getCategories().onEach { result ->
+                        result.onSuccess { list ->
+
+                            uiState.update {
+                                it.copy(categories = list)
+                            }
+                            Log.d("SSS", "getCategories $list")
+                            /*intent {
+                                reduce {
+                                    HomeContact.UiState(categories = it)
+                                }
+                            }*/
+                        }
+                    }.launchIn(viewModelScope)
+
                 }
             }
 
@@ -71,13 +69,11 @@ class HomeViewModel @Inject constructor(
 
 
             is HomeContact.Intent.SelectCategories -> {
-                useCase.getFoodsByCategory("", intent.list).onEach {
-                    it.onSuccess {
-                        Log.d("LLL", "$it")
-                        intent {
-                            reduce {
-                                HomeContact.UiState.Foods(it)
-                            }
+                useCase.getFoodsByCategory("", intent.list).onEach { result ->
+                    result.onSuccess { list ->
+                        Log.d("LLL", "$list")
+                        uiState.update {
+                            it.copy(foods = list)
                         }
                     }
                 }.launchIn(viewModelScope)
@@ -85,19 +81,16 @@ class HomeViewModel @Inject constructor(
 
             is HomeContact.Intent.Search -> {
                 useCase.getFoodsByCategory(intent.name, list)
-                    .onEach {
-                        it.onSuccess {
-                            intent {
-                                reduce {
-                                    HomeContact.UiState.Foods(it)
-                                }
+                    .onEach {result ->
+                        result.onSuccess { list ->
+                            uiState.update {
+                                it.copy(foods = list)
                             }
                             Log.d("TTT", list.toString())
-                            Log.d("TTT", "getFoods on success ${it.size}")
+                            Log.d("TTT", "getFoods on success $list")
 
                         }
-                        it.onFailure {
-
+                        result.onFailure {
                         }
                     }.launchIn(viewModelScope)
             }

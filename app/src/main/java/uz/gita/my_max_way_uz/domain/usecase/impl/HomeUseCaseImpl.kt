@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import uz.gita.my_max_way_uz.data.model.CategoryData
+import uz.gita.my_max_way_uz.data.model.FoodData
 import uz.gita.my_max_way_uz.domain.repository.NetworkRepository
 import uz.gita.my_max_way_uz.domain.usecase.HomeUseCase
 import javax.inject.Inject
@@ -19,12 +20,36 @@ class HomeUseCaseImpl @Inject constructor(private val repository: NetworkReposit
 
             val result = repository.getAllCategory()
             result.onSuccess { list ->
+                val resultList = arrayListOf<CategoryData>()
                 if (lit.isEmpty()) {
-                    emit(Result.success(list))
+                    list.forEach {
+                        val foodList = arrayListOf<FoodData>()
+                        it.items.forEach { foodData ->
+                            if (foodData.name.contains(name) or foodData.info.contains(name)) {
+                                foodList.add(foodData)
+                            }
+                        }
+                        if (foodList.isNotEmpty())
+                            resultList.add(CategoryData(it.id, it.name, foodList))
+                    }
+                    emit(Result.success(resultList))
                 } else {
-                    emit(Result.success(list.filter {
+                    list.forEach {
+                        if (lit.contains(it.name)) {
+                            val foodList = arrayListOf<FoodData>()
+                            it.items.forEach { foodData ->
+                                if (foodData.name.contains(name) or foodData.info.contains(name)) {
+                                    foodList.add(foodData)
+                                }
+                            }
+                            if (foodList.isNotEmpty())
+                                resultList.add(CategoryData(it.id, it.name, foodList))
+                        }
+                    }
+                    emit(Result.success(resultList))
+                    /*emit(Result.success(list.filter {
                         lit.contains(it.name)
-                    }))
+                    }))*/
                 }
             }
             result.onFailure {
@@ -61,8 +86,8 @@ class HomeUseCaseImpl @Inject constructor(private val repository: NetworkReposit
     override fun getCategories(): Flow<Result<List<String>>> = flow<Result<List<String>>> {
         val resultList = arrayListOf<String>()
         repository.getAllCategory()
-            .onSuccess {
-                it.forEach {
+            .onSuccess {result ->
+                result.forEach {
                     resultList.add(it.name)
                 }
             }
