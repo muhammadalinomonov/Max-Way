@@ -64,9 +64,6 @@ class HomeScreen : Tab, AppScreen() {
 
         var search by remember { mutableStateOf("") }
 
-//        onEventDispatcher(HomeContact.Intent.Load)
-
-//        var selectedCategories by remember { mutableStateOf(mutableListOf<String>()) }
 
         foodsList = uiState.foods
 

@@ -9,4 +9,7 @@ interface SharedPref {
     var phone: String
 
     var password: String
+    var name: String
+
+    var birthday: String
 }

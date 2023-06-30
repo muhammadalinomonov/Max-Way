@@ -1,126 +1,126 @@
 [
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_splash.png.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\splash.png"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_ic_profile.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/ic_profile.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_foof_placeholder.png.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\foof_placeholder.png"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_bottom_menu_buy.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\bottom_menu_buy.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_bottom_menu_profile.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\bottom_menu_profile.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_splash.png.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/splash.png"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_bottom_menu_home.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/bottom_menu_home.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_ic_profile.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\ic_profile.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_ic_buy.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/ic_buy.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\xml\\data_extraction_rules.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_bottom_menu_profile.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/bottom_menu_profile.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_ic_home.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\ic_home.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_ic_home_fill.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/ic_home_fill.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_minus.png.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/minus.png"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\mipmap-xhdpi\\ic_launcher.webp"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable-v24\\ic_launcher_foreground.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_bag.png.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\bag.png"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "uz.gita.my_max_way_uz.app-merged_res-59:/drawable_bag.xml.flat",
-        "source": "uz.gita.my_max_way_uz.app-main-61:/drawable/bag.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_foof_placeholder.png.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/foof_placeholder.png"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_ic_home_fill.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\ic_home_fill.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/xml_backup_rules.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/xml/backup_rules.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_ic_buy.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\ic_buy.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_plus.png.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/plus.png"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/xml_data_extraction_rules.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_minus.png.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\minus.png"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_ic_calendar.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/ic_calendar.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_ic_buy_fill.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\ic_buy_fill.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_bottom_menu_buy.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/bottom_menu_buy.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\xml\\backup_rules.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_ic_profile_fill.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/ic_profile_fill.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_bottom_menu_home.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\bottom_menu_home.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_ic_buy_fill.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/ic_buy_fill.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable-v24/ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_plus.png.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\plus.png"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_ic_launcher_background.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\ic_launcher_background.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_bag.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/bag.xml"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\drawable_ic_profile_fill.xml.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\drawable\\ic_profile_fill.xml"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-merged_res-59:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\TUF\\.gradle\\daemon\\8.0\\uz.gita.my_max_way_uz.app-main-61:\\mipmap-xhdpi\\ic_launcher_round.webp"
+        "merged": "uz.gita.my_max_way_uz.app-merged_res-60:/drawable_ic_home.xml.flat",
+        "source": "uz.gita.my_max_way_uz.app-main-62:/drawable/ic_home.xml"
     }
 ]

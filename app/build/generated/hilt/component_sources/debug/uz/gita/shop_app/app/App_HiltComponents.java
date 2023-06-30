@@ -56,8 +56,10 @@ import uz.gita.my_max_way_uz.di.SharedPrefModule;
 import uz.gita.my_max_way_uz.di.UseCaseModule;
 import uz.gita.my_max_way_uz.presentation.page.busket.BasketViewModel_HiltModules;
 import uz.gita.my_max_way_uz.presentation.page.details.DetailsViewModel_HiltModules;
+import uz.gita.my_max_way_uz.presentation.page.editprofile.EditProfileViewModel_HiltModules;
 import uz.gita.my_max_way_uz.presentation.page.home.HomeViewModel_HiltModules;
 import uz.gita.my_max_way_uz.presentation.page.orders.OrdersViewModel_HiltModules;
+import uz.gita.my_max_way_uz.presentation.page.profile.ProfileViewModel_HiltModules;
 import uz.gita.my_max_way_uz.presentation.screen.login.LoginViewModel_HiltModules;
 import uz.gita.my_max_way_uz.presentation.screen.splash.SplashViewModel_HiltModules;
 import uz.gita.my_max_way_uz.presentation.screen.verify.VerifyViewModel_HiltModules;
@@ -166,11 +168,13 @@ public final class App_HiltComponents {
           ViewModelCBuilderModule.class,
           BasketViewModel_HiltModules.KeyModule.class,
           DetailsViewModel_HiltModules.KeyModule.class,
+          EditProfileViewModel_HiltModules.KeyModule.class,
           HiltWrapper_ActivityRetainedComponentManager_LifecycleModule.class,
           HomeViewModel_HiltModules.KeyModule.class,
           LoginViewModel_HiltModules.KeyModule.class,
           OptionalMultibindingsModule.class,
           OrdersViewModel_HiltModules.KeyModule.class,
+          ProfileViewModel_HiltModules.KeyModule.class,
           SplashViewModel_HiltModules.KeyModule.class,
           VerifyViewModel_HiltModules.KeyModule.class
       }
@@ -213,10 +217,12 @@ public final class App_HiltComponents {
           BasketViewModel_HiltModules.BindsModule.class,
           DetailsViewModel_HiltModules.BindsModule.class,
           DirectionModule.class,
+          EditProfileViewModel_HiltModules.BindsModule.class,
           HiltWrapper_HiltViewModelFactory_ViewModelModule.class,
           HomeViewModel_HiltModules.BindsModule.class,
           LoginViewModel_HiltModules.BindsModule.class,
           OrdersViewModel_HiltModules.BindsModule.class,
+          ProfileViewModel_HiltModules.BindsModule.class,
           SplashViewModel_HiltModules.BindsModule.class,
           VerifyViewModel_HiltModules.BindsModule.class
       }

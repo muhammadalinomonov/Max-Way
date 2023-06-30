@@ -1,6 +1,5 @@
 package uz.gita.my_max_way_uz.presentation.page.busket
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,7 +13,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -120,36 +118,39 @@ class BasketScreen : Tab, AppScreen() {
                             OrderFoodItem(foodData, onEventDispatcher)
 
                         }
-                        item {
-                            Surface(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(80.dp)
-                                    .clip(RoundedCornerShape(4.dp)),
-                                shadowElevation = 4.dp
-                            ) {
-                                Column(modifier = Modifier.fillMaxSize()) {
-                                    Text(text = "Izoh")
+                        if (foodsList.isNotEmpty())
+                            item {
+                                Surface(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(80.dp)
+                                        .clip(RoundedCornerShape(4.dp)),
+                                    shadowElevation = 4.dp
+                                ) {
+                                    Column(modifier = Modifier.fillMaxSize()) {
 
-                                    TextField(
-                                        modifier = Modifier.fillMaxWidth()
-                                            .padding(horizontal = 8.dp, vertical = 4.dp),
-                                        value = comment,
-                                        onValueChange = { comment = it },
-                                        colors = TextFieldDefaults.textFieldColors(
-                                            textColor = Color.Black,
-                                            focusedIndicatorColor = Color.Transparent,
-                                            unfocusedIndicatorColor = Color.Transparent,
-                                            disabledIndicatorColor = Color.Transparent,
-                                            cursorColor = Color(0xFF050505)
-                                        ),
-                                        singleLine = true,
-                                        placeholder = { Text(text = "", color = Color.Black) }
-                                    )
+                                        Text(text = "Izoh")
+
+                                        TextField(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .padding(horizontal = 8.dp, vertical = 4.dp),
+                                            value = comment,
+                                            onValueChange = { comment = it },
+                                            colors = TextFieldDefaults.textFieldColors(
+                                                textColor = Color.Black,
+                                                focusedIndicatorColor = Color.Transparent,
+                                                unfocusedIndicatorColor = Color.Transparent,
+                                                disabledIndicatorColor = Color.Transparent,
+                                                cursorColor = Color(0xFF050505)
+                                            ),
+                                            singleLine = true,
+                                            placeholder = { Text(text = "", color = Color.Black) }
+                                        )
+                                    }
+
                                 }
-
                             }
-                        }
                     }
 
                     Row(
@@ -170,6 +171,7 @@ class BasketScreen : Tab, AppScreen() {
                                     amount
                                 )
                             )
+
                         }, modifier = Modifier
                             .fillMaxWidth()
                             .height(55.dp)

@@ -42,7 +42,7 @@ class MainScreen : AppScreen() {
                         TabNavigationItem(tab = HomeScreen())
                         TabNavigationItem(tab = BasketScreen())
                         TabNavigationItem(tab = OrdersScreen())
-//                        TabNavigationItem(tab = ProfileScreen())
+                        TabNavigationItem(tab = ProfileScreen())
                     }
                 }
             )

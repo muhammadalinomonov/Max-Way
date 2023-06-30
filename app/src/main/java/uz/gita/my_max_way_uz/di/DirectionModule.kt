@@ -8,8 +8,12 @@ import uz.gita.my_max_way_uz.presentation.page.busket.BasketContract
 import uz.gita.my_max_way_uz.presentation.page.busket.BasketDirections
 import uz.gita.my_max_way_uz.presentation.page.details.DetailsContract
 import uz.gita.my_max_way_uz.presentation.page.details.DetailsDirections
+import uz.gita.my_max_way_uz.presentation.page.editprofile.EditProfileContact
+import uz.gita.my_max_way_uz.presentation.page.editprofile.EditProfileDirections
 import uz.gita.my_max_way_uz.presentation.page.home.HomeContact
 import uz.gita.my_max_way_uz.presentation.page.home.HomeScreenDirection
+import uz.gita.my_max_way_uz.presentation.page.profile.ProfileContact
+import uz.gita.my_max_way_uz.presentation.page.profile.ProfileScreenDirections
 import uz.gita.my_max_way_uz.presentation.screen.login.LoginContract
 import uz.gita.my_max_way_uz.presentation.screen.login.LoginDirectionImpl
 import uz.gita.my_max_way_uz.presentation.screen.splash.SplashDirection
@@ -37,6 +41,12 @@ interface DirectionModule {
 
     @Binds
     fun bindBasketDirection(impl: BasketDirections): BasketContract.Directions
+
+    @Binds
+    fun bindProfileDirection(impl: ProfileScreenDirections): ProfileContact.Directions
+
+    @Binds
+    fun bindEditProfileDirection(impl: EditProfileDirections): EditProfileContact.Directions
 
 
 }

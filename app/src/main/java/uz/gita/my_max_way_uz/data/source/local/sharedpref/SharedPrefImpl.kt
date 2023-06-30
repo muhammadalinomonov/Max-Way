@@ -28,4 +28,20 @@ class SharedPrefImpl @Inject constructor(private val pref: SharedPreferences) : 
             pref.edit().putString("PAROL", value).apply()
         }
         get() = pref.getString("PAROL", "").toString()
+
+    override var name: String
+        set(value) {
+            pref.edit().putString("NAME", value).apply()
+        }
+        get() = pref.getString("NAME", "").toString()
+
+    override var birthday: String
+        set(value) {
+            pref.edit().putString("BIRTHDAY", value).apply()
+        }
+        get() = pref.getString("BIRTHDAY", "").toString()
+
+
+
+
 }

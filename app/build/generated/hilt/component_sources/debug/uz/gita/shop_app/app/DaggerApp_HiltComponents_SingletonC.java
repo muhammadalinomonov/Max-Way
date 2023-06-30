@@ -65,11 +65,17 @@ import uz.gita.my_max_way_uz.presentation.page.busket.BasketViewModel_HiltModule
 import uz.gita.my_max_way_uz.presentation.page.details.DetailsDirections;
 import uz.gita.my_max_way_uz.presentation.page.details.DetailsViewModel;
 import uz.gita.my_max_way_uz.presentation.page.details.DetailsViewModel_HiltModules_KeyModule_ProvideFactory;
+import uz.gita.my_max_way_uz.presentation.page.editprofile.EditProfileDirections;
+import uz.gita.my_max_way_uz.presentation.page.editprofile.EditProfileViewModel;
+import uz.gita.my_max_way_uz.presentation.page.editprofile.EditProfileViewModel_HiltModules_KeyModule_ProvideFactory;
 import uz.gita.my_max_way_uz.presentation.page.home.HomeScreenDirection;
 import uz.gita.my_max_way_uz.presentation.page.home.HomeViewModel;
 import uz.gita.my_max_way_uz.presentation.page.home.HomeViewModel_HiltModules_KeyModule_ProvideFactory;
 import uz.gita.my_max_way_uz.presentation.page.orders.OrdersViewModel;
 import uz.gita.my_max_way_uz.presentation.page.orders.OrdersViewModel_HiltModules_KeyModule_ProvideFactory;
+import uz.gita.my_max_way_uz.presentation.page.profile.ProfileScreenDirections;
+import uz.gita.my_max_way_uz.presentation.page.profile.ProfileViewModel;
+import uz.gita.my_max_way_uz.presentation.page.profile.ProfileViewModel_HiltModules_KeyModule_ProvideFactory;
 import uz.gita.my_max_way_uz.presentation.screen.login.LoginDirectionImpl;
 import uz.gita.my_max_way_uz.presentation.screen.login.LoginViewModel;
 import uz.gita.my_max_way_uz.presentation.screen.login.LoginViewModel_HiltModules_KeyModule_ProvideFactory;
@@ -436,7 +442,7 @@ public final class DaggerApp_HiltComponents_SingletonC {
 
     @Override
     public Set<String> getViewModelKeys() {
-      return ImmutableSet.<String>of(BasketViewModel_HiltModules_KeyModule_ProvideFactory.provide(), DetailsViewModel_HiltModules_KeyModule_ProvideFactory.provide(), HomeViewModel_HiltModules_KeyModule_ProvideFactory.provide(), LoginViewModel_HiltModules_KeyModule_ProvideFactory.provide(), OrdersViewModel_HiltModules_KeyModule_ProvideFactory.provide(), SplashViewModel_HiltModules_KeyModule_ProvideFactory.provide(), VerifyViewModel_HiltModules_KeyModule_ProvideFactory.provide());
+      return ImmutableSet.<String>of(BasketViewModel_HiltModules_KeyModule_ProvideFactory.provide(), DetailsViewModel_HiltModules_KeyModule_ProvideFactory.provide(), EditProfileViewModel_HiltModules_KeyModule_ProvideFactory.provide(), HomeViewModel_HiltModules_KeyModule_ProvideFactory.provide(), LoginViewModel_HiltModules_KeyModule_ProvideFactory.provide(), OrdersViewModel_HiltModules_KeyModule_ProvideFactory.provide(), ProfileViewModel_HiltModules_KeyModule_ProvideFactory.provide(), SplashViewModel_HiltModules_KeyModule_ProvideFactory.provide(), VerifyViewModel_HiltModules_KeyModule_ProvideFactory.provide());
     }
 
     @Override
@@ -477,11 +483,15 @@ public final class DaggerApp_HiltComponents_SingletonC {
 
     private Provider<DetailsViewModel> detailsViewModelProvider;
 
+    private Provider<EditProfileViewModel> editProfileViewModelProvider;
+
     private Provider<HomeViewModel> homeViewModelProvider;
 
     private Provider<LoginViewModel> loginViewModelProvider;
 
     private Provider<OrdersViewModel> ordersViewModelProvider;
+
+    private Provider<ProfileViewModel> profileViewModelProvider;
 
     private Provider<SplashViewModel> splashViewModelProvider;
 
@@ -505,12 +515,20 @@ public final class DaggerApp_HiltComponents_SingletonC {
       return new DetailsDirections(singletonCImpl.navigationDispatcherProvider.get());
     }
 
+    private EditProfileDirections editProfileDirections() {
+      return new EditProfileDirections(singletonCImpl.navigationDispatcherProvider.get());
+    }
+
     private HomeScreenDirection homeScreenDirection() {
       return new HomeScreenDirection(singletonCImpl.navigationDispatcherProvider.get());
     }
 
     private LoginDirectionImpl loginDirectionImpl() {
       return new LoginDirectionImpl(singletonCImpl.navigationDispatcherProvider.get());
+    }
+
+    private ProfileScreenDirections profileScreenDirections() {
+      return new ProfileScreenDirections(singletonCImpl.navigationDispatcherProvider.get());
     }
 
     private SplashDirectionImpl splashDirectionImpl() {
@@ -526,16 +544,18 @@ public final class DaggerApp_HiltComponents_SingletonC {
         final ViewModelLifecycle viewModelLifecycleParam) {
       this.basketViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
       this.detailsViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
-      this.homeViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
-      this.loginViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
-      this.ordersViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 4);
-      this.splashViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 5);
-      this.verifyViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 6);
+      this.editProfileViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
+      this.homeViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
+      this.loginViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 4);
+      this.ordersViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 5);
+      this.profileViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 6);
+      this.splashViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 7);
+      this.verifyViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 8);
     }
 
     @Override
     public Map<String, Provider<ViewModel>> getHiltViewModelMap() {
-      return ImmutableMap.<String, Provider<ViewModel>>builderWithExpectedSize(7).put("uz.gita.my_max_way_uz.presentation.page.busket.BasketViewModel", ((Provider) basketViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.page.details.DetailsViewModel", ((Provider) detailsViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.page.home.HomeViewModel", ((Provider) homeViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.screen.login.LoginViewModel", ((Provider) loginViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.page.orders.OrdersViewModel", ((Provider) ordersViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.screen.splash.SplashViewModel", ((Provider) splashViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.screen.verify.VerifyViewModel", ((Provider) verifyViewModelProvider)).build();
+      return ImmutableMap.<String, Provider<ViewModel>>builderWithExpectedSize(9).put("uz.gita.my_max_way_uz.presentation.page.busket.BasketViewModel", ((Provider) basketViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.page.details.DetailsViewModel", ((Provider) detailsViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.page.editprofile.EditProfileViewModel", ((Provider) editProfileViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.page.home.HomeViewModel", ((Provider) homeViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.screen.login.LoginViewModel", ((Provider) loginViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.page.orders.OrdersViewModel", ((Provider) ordersViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.page.profile.ProfileViewModel", ((Provider) profileViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.screen.splash.SplashViewModel", ((Provider) splashViewModelProvider)).put("uz.gita.my_max_way_uz.presentation.screen.verify.VerifyViewModel", ((Provider) verifyViewModelProvider)).build();
     }
 
     private static final class SwitchingProvider<T> implements Provider<T> {
@@ -565,19 +585,25 @@ public final class DaggerApp_HiltComponents_SingletonC {
           case 1: // uz.gita.my_max_way_uz.presentation.page.details.DetailsViewModel 
           return (T) new DetailsViewModel(viewModelCImpl.detailsDirections(), singletonCImpl.bindOrderUseCaseProvider.get(), singletonCImpl.providesMySharedPrefProvider.get());
 
-          case 2: // uz.gita.my_max_way_uz.presentation.page.home.HomeViewModel 
+          case 2: // uz.gita.my_max_way_uz.presentation.page.editprofile.EditProfileViewModel 
+          return (T) new EditProfileViewModel(singletonCImpl.providesMySharedPrefProvider.get(), viewModelCImpl.editProfileDirections());
+
+          case 3: // uz.gita.my_max_way_uz.presentation.page.home.HomeViewModel 
           return (T) new HomeViewModel(viewModelCImpl.homeScreenDirection(), singletonCImpl.bindNetworkUseCaseProvider.get());
 
-          case 3: // uz.gita.my_max_way_uz.presentation.screen.login.LoginViewModel 
+          case 4: // uz.gita.my_max_way_uz.presentation.screen.login.LoginViewModel 
           return (T) new LoginViewModel(viewModelCImpl.loginDirectionImpl(), singletonCImpl.bindAuthRepoProvider.get(), singletonCImpl.providesMySharedPrefProvider.get());
 
-          case 4: // uz.gita.my_max_way_uz.presentation.page.orders.OrdersViewModel 
+          case 5: // uz.gita.my_max_way_uz.presentation.page.orders.OrdersViewModel 
           return (T) new OrdersViewModel(singletonCImpl.bindOrderUseCaseProvider.get(), singletonCImpl.providesMySharedPrefProvider.get());
 
-          case 5: // uz.gita.my_max_way_uz.presentation.screen.splash.SplashViewModel 
+          case 6: // uz.gita.my_max_way_uz.presentation.page.profile.ProfileViewModel 
+          return (T) new ProfileViewModel(singletonCImpl.providesMySharedPrefProvider.get(), viewModelCImpl.profileScreenDirections());
+
+          case 7: // uz.gita.my_max_way_uz.presentation.screen.splash.SplashViewModel 
           return (T) new SplashViewModel(viewModelCImpl.splashDirectionImpl(), singletonCImpl.providesMySharedPrefProvider.get());
 
-          case 6: // uz.gita.my_max_way_uz.presentation.screen.verify.VerifyViewModel 
+          case 8: // uz.gita.my_max_way_uz.presentation.screen.verify.VerifyViewModel 
           return (T) new VerifyViewModel(viewModelCImpl.verifyDirection(), singletonCImpl.bindAuthRepoProvider.get(), singletonCImpl.providesMySharedPrefProvider.get());
 
           default: throw new AssertionError(id);
