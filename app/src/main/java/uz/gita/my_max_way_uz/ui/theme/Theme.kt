@@ -1,5 +1,6 @@
 package uz.gita.my_max_way_uz.ui.theme
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -11,10 +12,10 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import uz.gita.my_max_way_uz.R
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -37,10 +38,11 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Color(0xFF1C1B1F),
     */
 )
-val  PinkColor = Color(0xFF7034DA)
+val PinkColor = Color(0xFF7034DA)
 val LightGrayColor = Color(0xFDB1664)
 
 
+@SuppressLint("ResourceAsColor")
 @Composable
 fun MaxWayTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -61,7 +63,8 @@ fun MaxWayTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = R.color.statusbarcolor
+            window.navigationBarColor = R.color.statusbarcolor
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }

@@ -15,7 +15,7 @@ class OrderUseCaseImpl @Inject constructor(
 ) : OrderUseCase {
     override fun addToRoom(foodEntity: FoodEntity): Flow<Result<String>> = flow {
         roomRepository.addToRoom(foodEntity)
-        emit(Result.success("Success"))
+        emit(Result.success("Savatga qo'shildi"))
     }
 
     override fun addOrder(orderData: OrderData): Flow<Result<String>> =

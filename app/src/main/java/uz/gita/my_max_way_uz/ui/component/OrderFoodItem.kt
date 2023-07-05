@@ -30,15 +30,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import uz.gita.my_max_way_uz.R
 import uz.gita.my_max_way_uz.data.source.local.room.entity.FoodEntity
 import uz.gita.my_max_way_uz.presentation.page.busket.BasketContract
 
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun OrderFoodItem(foodData: FoodEntity, onEventDispatcher: (BasketContract.Intent) -> Unit) {
     var count by remember {
@@ -47,10 +47,10 @@ fun OrderFoodItem(foodData: FoodEntity, onEventDispatcher: (BasketContract.Inten
     Surface(
         Modifier
             .fillMaxWidth()
-            .height(120.dp)
+            .height(100.dp)
             .padding(4.dp)
             .background(Color.Green),
-        shadowElevation = 8.dp
+        shadowElevation = 1.dp
     ) {
         Row(modifier = Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceBetween) {
             AsyncImage(
@@ -78,12 +78,17 @@ fun OrderFoodItem(foodData: FoodEntity, onEventDispatcher: (BasketContract.Inten
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier
-                        .padding(top = 16.dp)
+                        .padding(top = 4.dp)
                         .height(30.dp)
                         .fillMaxWidth()
                         .padding(horizontal = 8.dp)
                 ) {
-                    Text(text = foodData.name, modifier = Modifier.align(CenterVertically))
+                    Text(
+                        text = foodData.name,
+                        modifier = Modifier.align(CenterVertically),
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 18.sp
+                    )
                     IconButton(onClick = {
                         onEventDispatcher(
                             BasketContract.Intent.DeleteItem(
@@ -91,7 +96,11 @@ fun OrderFoodItem(foodData: FoodEntity, onEventDispatcher: (BasketContract.Inten
                             )
                         )
                     }, modifier = Modifier.align(CenterVertically)) {
-                        Icon(imageVector = Icons.Default.Close, contentDescription = null)
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            modifier = Modifier,
+                            contentDescription = null
+                        )
                     }
                 }
                 Row(
@@ -110,9 +119,9 @@ fun OrderFoodItem(foodData: FoodEntity, onEventDispatcher: (BasketContract.Inten
                     Card(
                         modifier = Modifier
                             .clip(RoundedCornerShape(8.dp))
-                            .width(100.dp)
-                            .height(40.dp)
-                            .padding(start = 8.dp)
+                            .width(95.dp)
+                            .height(38.dp)
+                            .padding(start = 8.dp, bottom = 4.dp)
                             .align(CenterVertically)
                         /*.border(
                             1.dp, Color(
@@ -135,7 +144,7 @@ fun OrderFoodItem(foodData: FoodEntity, onEventDispatcher: (BasketContract.Inten
                                         )
                                 }, modifier = Modifier
                                     .width(30.dp)
-                                    .padding(4.dp)
+                                    .padding(8.dp)
                                     .align(CenterVertically),
                                 enabled = count > 1
                             ) {
@@ -160,7 +169,7 @@ fun OrderFoodItem(foodData: FoodEntity, onEventDispatcher: (BasketContract.Inten
                                     )
                                 }, modifier = Modifier
                                     .width(30.dp)
-                                    .padding(4.dp)
+                                    .padding(8.dp)
                                     .align(CenterVertically)
                             ) {
                                 Image(

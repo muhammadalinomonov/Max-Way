@@ -52,6 +52,7 @@ color notification_icon_bg_color
 color purple_200
 color purple_500
 color purple_700
+color statusbarcolor
 color teal_200
 color teal_700
 color vector_tint_color
@@ -83,6 +84,8 @@ dimen notification_top_pad
 dimen notification_top_pad_large_text
 drawable abc_vector_test
 drawable bag
+drawable bag2
+drawable bag3
 drawable baseline_arrow_drop_down_24
 drawable baseline_arrow_drop_up_24
 drawable bottom_menu_buy
@@ -107,6 +110,7 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable empty
 drawable foof_placeholder
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
@@ -117,6 +121,8 @@ drawable ic_home
 drawable ic_home_fill
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_loaction_2
+drawable ic_next
 drawable ic_profile
 drawable ic_profile_fill
 drawable minus

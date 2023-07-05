@@ -51,6 +51,7 @@ int color notification_icon_bg_color 0x7f040013
 int color purple_200 0x7f040014
 int color purple_500 0x7f040015
 int color purple_700 0x7f040016
+int color statusbarcolor 0x7f04001d
 int color teal_200 0x7f040017
 int color teal_700 0x7f040018
 int color vector_tint_color 0x7f040019
@@ -82,6 +83,8 @@ int dimen notification_top_pad 0x7f050016
 int dimen notification_top_pad_large_text 0x7f050017
 int drawable abc_vector_test 0x7f060001
 int drawable bag 0x7f060002
+int drawable bag2 0x7f060036
+int drawable bag3 0x7f060037
 int drawable baseline_arrow_drop_down_24 0x7f060003
 int drawable baseline_arrow_drop_up_24 0x7f060004
 int drawable bottom_menu_buy 0x7f060005
@@ -106,6 +109,7 @@ int drawable common_google_signin_btn_text_light 0x7f060017
 int drawable common_google_signin_btn_text_light_focused 0x7f060018
 int drawable common_google_signin_btn_text_light_normal 0x7f060019
 int drawable common_google_signin_btn_text_light_normal_background 0x7f06001a
+int drawable empty 0x7f06003a
 int drawable foof_placeholder 0x7f06001b
 int drawable googleg_disabled_color_18 0x7f06001c
 int drawable googleg_standard_color_18 0x7f06001d
@@ -116,6 +120,8 @@ int drawable ic_home 0x7f060021
 int drawable ic_home_fill 0x7f060022
 int drawable ic_launcher_background 0x7f060023
 int drawable ic_launcher_foreground 0x7f060024
+int drawable ic_loaction_2 0x7f060039
+int drawable ic_next 0x7f060038
 int drawable ic_profile 0x7f060025
 int drawable ic_profile_fill 0x7f060026
 int drawable minus 0x7f060027

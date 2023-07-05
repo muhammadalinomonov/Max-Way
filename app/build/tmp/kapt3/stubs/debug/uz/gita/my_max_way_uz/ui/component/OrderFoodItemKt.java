@@ -6,7 +6,6 @@ import java.lang.System;
 public final class OrderFoodItemKt {
     
     @androidx.compose.runtime.Composable
-    @kotlin.OptIn(markerClass = {com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi.class})
     public static final void OrderFoodItem(@org.jetbrains.annotations.NotNull
     uz.gita.my_max_way_uz.data.source.local.room.entity.FoodEntity foodData, @org.jetbrains.annotations.NotNull
     kotlin.jvm.functions.Function1<? super uz.gita.my_max_way_uz.presentation.page.busket.BasketContract.Intent, kotlin.Unit> onEventDispatcher) {

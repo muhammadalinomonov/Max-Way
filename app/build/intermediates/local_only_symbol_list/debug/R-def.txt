@@ -4,13 +4,17 @@ color black
 color purple_200
 color purple_500
 color purple_700
+color statusbarcolor
 color teal_200
 color teal_700
 color white
 drawable bag
+drawable bag2
+drawable bag3
 drawable bottom_menu_buy
 drawable bottom_menu_home
 drawable bottom_menu_profile
+drawable empty
 drawable foof_placeholder
 drawable ic_buy
 drawable ic_buy_fill
@@ -19,6 +23,8 @@ drawable ic_home
 drawable ic_home_fill
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_loaction_2
+drawable ic_next
 drawable ic_profile
 drawable ic_profile_fill
 drawable minus

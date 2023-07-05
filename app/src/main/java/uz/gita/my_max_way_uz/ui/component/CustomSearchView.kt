@@ -1,9 +1,11 @@
 package uz.gita.my_max_way_uz.ui.component
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -27,15 +29,17 @@ fun CustomSearchView(
 
     Box(
         modifier = modifier
+            .padding(top = 8.dp)
             .fillMaxWidth()
-            .padding(10.dp)
-            .clip(CircleShape)
+            .height(50.dp)
+            .padding(horizontal = 10.dp)
+            .clip(RoundedCornerShape(8.dp))
 
 
     ) {
 
         TextField(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxSize(),
             value = search,
             onValueChange = onValueChange,
             colors = TextFieldDefaults.textFieldColors(
@@ -47,7 +51,7 @@ fun CustomSearchView(
             ),
             leadingIcon = { Icon(imageVector = Icons.Default.Search, contentDescription = "") },
 //            trailingIcon = { Icon(imageVector = Icons.Default.Clear, contentDescription = "") },
-            placeholder = { Text(text = "Search...", color = Color.Black) }
+            placeholder = { Text(text = "Qidirish..", color = Color.Gray) }
         )
     }
 }

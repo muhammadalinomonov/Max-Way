@@ -59,7 +59,6 @@ import uz.gita.my_max_way_uz.domain.usecase.OrderUseCase;
 import uz.gita.my_max_way_uz.domain.usecase.impl.HomeUseCaseImpl;
 import uz.gita.my_max_way_uz.domain.usecase.impl.OrderUseCaseImpl;
 import uz.gita.my_max_way_uz.navigation.NavigationDispatcher;
-import uz.gita.my_max_way_uz.presentation.page.busket.BasketDirections;
 import uz.gita.my_max_way_uz.presentation.page.busket.BasketViewModel;
 import uz.gita.my_max_way_uz.presentation.page.busket.BasketViewModel_HiltModules_KeyModule_ProvideFactory;
 import uz.gita.my_max_way_uz.presentation.page.details.DetailsDirections;
@@ -507,10 +506,6 @@ public final class DaggerApp_HiltComponents_SingletonC {
 
     }
 
-    private BasketDirections basketDirections() {
-      return new BasketDirections(singletonCImpl.navigationDispatcherProvider.get());
-    }
-
     private DetailsDirections detailsDirections() {
       return new DetailsDirections(singletonCImpl.navigationDispatcherProvider.get());
     }
@@ -580,7 +575,7 @@ public final class DaggerApp_HiltComponents_SingletonC {
       public T get() {
         switch (id) {
           case 0: // uz.gita.my_max_way_uz.presentation.page.busket.BasketViewModel 
-          return (T) new BasketViewModel(singletonCImpl.bindOrderUseCaseProvider.get(), viewModelCImpl.basketDirections(), singletonCImpl.providesMySharedPrefProvider.get());
+          return (T) new BasketViewModel(singletonCImpl.bindOrderUseCaseProvider.get(), singletonCImpl.providesMySharedPrefProvider.get());
 
           case 1: // uz.gita.my_max_way_uz.presentation.page.details.DetailsViewModel 
           return (T) new DetailsViewModel(viewModelCImpl.detailsDirections(), singletonCImpl.bindOrderUseCaseProvider.get(), singletonCImpl.providesMySharedPrefProvider.get());

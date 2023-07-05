@@ -21,33 +21,27 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.Snackbar
-import androidx.compose.material3.SnackbarDuration
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.hilt.getViewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import kotlinx.coroutines.launch
-import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import uz.gita.my_max_way_uz.R
 import uz.gita.my_max_way_uz.data.model.FoodData
@@ -57,7 +51,6 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
     @Composable
     override fun Content() {
         val viewModel: DetailsContract.ViewModel = getViewModel<DetailsViewModel>()
-        val uiState: State<DetailsContract.UiState> = viewModel.collectAsState()
 
         val context = LocalContext.current
         viewModel.collectSideEffect { sideEffect ->
@@ -68,14 +61,14 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
                 }
             }
         }
-        DetailsScreenContent(uiState, viewModel::onEventDispatcher)
+        DetailsScreenContent(viewModel::onEventDispatcher)
 
     }
 
-    @OptIn(ExperimentalGlideComposeApi::class)
+
     @Composable
     private fun DetailsScreenContent(
-        uiState: State<DetailsContract.UiState>, onEventDispatcher: (DetailsContract.Intent) -> Unit
+        onEventDispatcher: (DetailsContract.Intent) -> Unit
     ) {
         var count by remember {
             mutableStateOf(1)
@@ -92,7 +85,8 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
                     AsyncImage(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clip(RoundedCornerShape(20.dp)),
+                            .background(Color.White)
+                            .clip(RoundedCornerShape(0.dp)),
                         model = ImageRequest.Builder(LocalContext.current)
                             .data(foodData.imgUrl)
                             .crossfade(true)
@@ -101,22 +95,13 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
                         error = painterResource(id = R.drawable.foof_placeholder),
                         contentDescription = null
                     )
-                    /*GlideImage(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(10.dp))
-                            .fillMaxSize()
-                            .padding(8.dp),
-                        model = foodData.imgUrl,
 
-                        contentDescription = ""
-                    )*/
                     IconButton(
                         onClick = { onEventDispatcher(DetailsContract.Intent.BackToHome) },
                         modifier = Modifier
-                            .padding(top = 8.dp, start = 8.dp)
-                            .padding(4.dp)
+                            .padding(top = 2.dp, start = 2.dp)
                             .clip(shape = RoundedCornerShape(50))
-                            .background(Color(0x803BB5EC))
+                            .background(Color(0xFFFFFFFF))
 
                     ) {
                         Icon(
@@ -127,10 +112,20 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
                     }
                 }
 
-                Text(text = foodData.name)
+                Text(
+                    text = foodData.name,
+                    modifier = Modifier.padding(start = 8.dp, top = 8.dp),
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
 
 
-                Text(text = foodData.info, modifier = Modifier.padding(top = 16.dp))
+                Text(
+                    text = foodData.info,
+                    modifier = Modifier.padding(top = 16.dp, start = 8.dp),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium
+                )
 
                 Spacer(
                     modifier = Modifier
@@ -147,8 +142,8 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
                     Card(
                         modifier = Modifier
                             .clip(RoundedCornerShape(8.dp))
-                            .width(200.dp)
-                            .height(45.dp)
+                            .width(120.dp)
+                            .height(42.dp)
                             .padding(start = 8.dp)
                         /*.border(
                             1.dp, Color(
@@ -166,7 +161,7 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
                                         count--
                                 }, modifier = Modifier
                                     .width(40.dp)
-                                    .padding(4.dp)
+                                    .padding(12.dp)
                                     .align(Alignment.CenterVertically),
                                 enabled = count > 1
                             ) {
@@ -185,7 +180,7 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
                                     count++
                                 }, modifier = Modifier
                                     .width(40.dp)
-                                    .padding(4.dp)
+                                    .padding(12.dp)
                                     .align(Alignment.CenterVertically)
                             ) {
                                 Image(
@@ -199,7 +194,9 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
 
                     Text(
                         text = "${count * foodData.price} so'm",
-                        modifier = Modifier.padding(end = 16.dp)
+                        modifier = Modifier.padding(end = 16.dp),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium
                     )
                 }
 
@@ -210,7 +207,10 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp)
-                        .padding(bottom = 8.dp),
+                        .height(56.dp)
+                        .clip(RoundedCornerShape(0.dp))
+                        .padding(bottom = 12.dp),
+                    shape = MaterialTheme.shapes.small,
                     colors = ButtonDefaults.buttonColors(Color(0xFF51277D))
                 ) {
                     Text(text = "Qo'shish", modifier = Modifier.align(Alignment.CenterVertically))
@@ -221,33 +221,33 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
     }
 
 
-    @Composable
-    fun TopSnackBar(
-        snackBarText: String,
-        duration: SnackbarDuration = SnackbarDuration.Short
-    ) {
-        val snackbarHostState = remember { SnackbarHostState() }
-        val coroutineScope = rememberCoroutineScope()
+    /* @Composable
+     fun TopSnackBar(
+         snackBarText: String,
+         duration: SnackbarDuration = SnackbarDuration.Short
+     ) {
+         val snackbarHostState = remember { SnackbarHostState() }
+         val coroutineScope = rememberCoroutineScope()
 
-        SnackbarHost(
-            hostState = snackbarHostState,
-            snackbar = { data ->
-                Snackbar(
-                    modifier = Modifier.padding(16.dp),
+         SnackbarHost(
+             hostState = snackbarHostState,
+             snackbar = { data ->
+                 Snackbar(
+                     modifier = Modifier.padding(16.dp),
 
-                    contentColor = Color.Black,
+                     contentColor = Color.Black,
 
-                    ) {
-                    Text(text = snackBarText)
-                }
-            }
-        )
+                     ) {
+                     Text(text = snackBarText)
+                 }
+             }
+         )
 
-        LaunchedEffect(snackBarText) {
-            coroutineScope.launch {
-                snackbarHostState.showSnackbar(snackBarText, duration.name)
-            }
-        }
-    }
+         LaunchedEffect(snackBarText) {
+             coroutineScope.launch {
+                 snackbarHostState.showSnackbar(snackBarText, duration.name)
+             }
+         }
+     }*/
 
 }

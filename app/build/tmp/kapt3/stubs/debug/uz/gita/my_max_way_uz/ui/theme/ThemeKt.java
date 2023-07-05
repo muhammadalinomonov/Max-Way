@@ -18,6 +18,7 @@ public final class ThemeKt {
     }
     
     @androidx.compose.runtime.Composable
+    @android.annotation.SuppressLint(value = {"ResourceAsColor"})
     public static final void MaxWayTheme(boolean darkTheme, boolean dynamicColor, @org.jetbrains.annotations.NotNull
     kotlin.jvm.functions.Function0<kotlin.Unit> content) {
     }

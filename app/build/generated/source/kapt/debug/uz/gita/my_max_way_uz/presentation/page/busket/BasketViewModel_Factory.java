@@ -19,31 +19,25 @@ import uz.gita.my_max_way_uz.domain.usecase.OrderUseCase;
 public final class BasketViewModel_Factory implements Factory<BasketViewModel> {
   private final Provider<OrderUseCase> useCaseProvider;
 
-  private final Provider<BasketContract.Directions> directionProvider;
-
   private final Provider<SharedPref> sharedPrefProvider;
 
   public BasketViewModel_Factory(Provider<OrderUseCase> useCaseProvider,
-      Provider<BasketContract.Directions> directionProvider,
       Provider<SharedPref> sharedPrefProvider) {
     this.useCaseProvider = useCaseProvider;
-    this.directionProvider = directionProvider;
     this.sharedPrefProvider = sharedPrefProvider;
   }
 
   @Override
   public BasketViewModel get() {
-    return newInstance(useCaseProvider.get(), directionProvider.get(), sharedPrefProvider.get());
+    return newInstance(useCaseProvider.get(), sharedPrefProvider.get());
   }
 
   public static BasketViewModel_Factory create(Provider<OrderUseCase> useCaseProvider,
-      Provider<BasketContract.Directions> directionProvider,
       Provider<SharedPref> sharedPrefProvider) {
-    return new BasketViewModel_Factory(useCaseProvider, directionProvider, sharedPrefProvider);
+    return new BasketViewModel_Factory(useCaseProvider, sharedPrefProvider);
   }
 
-  public static BasketViewModel newInstance(OrderUseCase useCase,
-      BasketContract.Directions direction, SharedPref sharedPref) {
-    return new BasketViewModel(useCase, direction, sharedPref);
+  public static BasketViewModel newInstance(OrderUseCase useCase, SharedPref sharedPref) {
+    return new BasketViewModel(useCase, sharedPref);
   }
 }

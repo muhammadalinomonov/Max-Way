@@ -1,16 +1,24 @@
 package uz.gita.my_max_way_uz.presentation.screen.main
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
@@ -38,7 +46,13 @@ class MainScreen : AppScreen() {
                     }
                 },
                 bottomBar = {
-                    NavigationBar(modifier = Modifier) {
+                    NavigationBar(
+                        modifier = Modifier
+                            .height(70.dp)
+                            .background(Color.White),
+                        contentColor = Color.White,
+                        containerColor = Color.White
+                    ) {
                         TabNavigationItem(tab = HomeScreen())
                         TabNavigationItem(tab = BasketScreen())
                         TabNavigationItem(tab = OrdersScreen())
@@ -57,6 +71,28 @@ private fun RowScope.TabNavigationItem(tab: Tab) {
     NavigationBarItem(
         selected = tabNavigator.current == tab,
         onClick = { tabNavigator.current = tab },
-        icon = { Icon(painter = tab.options.icon!!, contentDescription = tab.options.title) }
+        alwaysShowLabel = true,
+        label = {
+            Text(
+                text = tab.options.title,
+                modifier = Modifier,
+                color = if (tabNavigator.current == tab) Color(0xFF50267D) else Color.Black,
+                fontSize = 11.sp
+            )
+        },
+        colors = NavigationBarItemDefaults.colors(
+            selectedIconColor = Color.White,
+            unselectedIconColor = MaterialTheme.colorScheme.onPrimary,
+            indicatorColor = Color.White
+        ),
+        icon = {
+            Icon(
+                painter = tab.options.icon!!,
+
+                contentDescription = tab.options.title,
+                tint = if (tabNavigator.current == tab) Color(0xFF50267D) else Color.Black
+            )
+        }
+
     )
 }

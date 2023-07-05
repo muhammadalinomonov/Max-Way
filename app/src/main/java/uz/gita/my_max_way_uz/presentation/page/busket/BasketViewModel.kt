@@ -18,7 +18,6 @@ import javax.inject.Inject
 @HiltViewModel
 class BasketViewModel @Inject constructor(
     private val useCase: OrderUseCase,
-    private val direction: BasketContract.Directions,
     private val sharedPref: SharedPref
 ) : BasketContract.ViewModel, ViewModel() {
     override val container =
@@ -52,7 +51,9 @@ class BasketViewModel @Inject constructor(
                 )
                     .onEach {
                         it.onSuccess {
-                            useCase.clearBasket()
+                            useCase.clearBasket().onEach {
+
+                            }.launchIn(viewModelScope)
                             intent {
                                 Log.d("AAAAA", it)
                                 postSideEffect(BasketContract.SideEffect.HasError(it))
