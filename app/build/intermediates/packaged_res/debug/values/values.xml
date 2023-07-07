@@ -8,7 +8,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFFFF</color>
-    <string name="app_name">Max Way</string>
+    <string name="app_name">Max Way clone</string>
     <string name="default_web_client_id" translatable="false">546433290943-b0k64380dk6o60td433o6hi5rg0et7lt.apps.googleusercontent.com</string>
     <string name="gcm_defaultSenderId" translatable="false">546433290943</string>
     <string name="google_api_key" translatable="false">AIzaSyASB5LybC64qR-4MztZpEUkwg3OMzOffrU</string>

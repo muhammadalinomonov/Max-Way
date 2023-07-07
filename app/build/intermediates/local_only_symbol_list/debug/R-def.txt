@@ -30,6 +30,7 @@ drawable ic_profile_fill
 drawable minus
 drawable plus
 drawable splash
+drawable unnamed
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
