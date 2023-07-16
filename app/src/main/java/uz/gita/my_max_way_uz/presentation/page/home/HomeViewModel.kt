@@ -1,6 +1,5 @@
 package uz.gita.my_max_way_uz.presentation.page.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -37,7 +36,6 @@ class HomeViewModel @Inject constructor(
                             uiState.update {
                                 it.copy(foods = list)
                             }
-                            Log.d("TTT", "view model ${uiState.value.foods}")
                         }
 
                     }.launchIn(viewModelScope)
@@ -48,12 +46,6 @@ class HomeViewModel @Inject constructor(
                             uiState.update {
                                 it.copy(categories = list)
                             }
-                            Log.d("SSS", "getCategories $list")
-                            /*intent {
-                                reduce {
-                                    HomeContact.UiState(categories = it)
-                                }
-                            }*/
                         }
                     }.launchIn(viewModelScope)
 
@@ -71,7 +63,6 @@ class HomeViewModel @Inject constructor(
             is HomeContact.Intent.SelectCategories -> {
                 useCase.getFoodsByCategory("", intent.list).onEach { result ->
                     result.onSuccess { list ->
-                        Log.d("LLL", "$list")
                         uiState.update {
                             it.copy(foods = list)
                         }
@@ -81,13 +72,11 @@ class HomeViewModel @Inject constructor(
 
             is HomeContact.Intent.Search -> {
                 useCase.getFoodsByCategory(intent.name, list)
-                    .onEach {result ->
+                    .onEach { result ->
                         result.onSuccess { list ->
                             uiState.update {
                                 it.copy(foods = list)
                             }
-                            Log.d("TTT", list.toString())
-                            Log.d("TTT", "getFoods on success $list")
 
                         }
                         result.onFailure {
@@ -98,32 +87,3 @@ class HomeViewModel @Inject constructor(
     }
 
 }
-/*viewModelScope.launch {
-                    useCase.getCategories().onEach {
-                        it.onSuccess {
-                            intent {
-                                reduce {
-                                    list.addAll(it)
-
-                                    HomeContact.UiState.Categories(it)
-                                }
-                            }
-                        }
-                    }.launchIn(viewModelScope)
-                    delay(2000)
-                    useCase.getFoodsByCategory("", list)
-                        .onEach {
-                            it.onSuccess {
-                                Log.d("LLL", "$it")
-                                intent {
-                                    reduce {
-                                        HomeContact.UiState.Foods(it)
-                                    }
-                                }
-
-                            }
-                            it.onFailure {
-
-                            }
-                        }.launchIn(viewModelScope)
-                }*/

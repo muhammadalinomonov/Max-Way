@@ -47,9 +47,6 @@ class HomeUseCaseImpl @Inject constructor(private val repository: NetworkReposit
                         }
                     }
                     emit(Result.success(resultList))
-                    /*emit(Result.success(list.filter {
-                        lit.contains(it.name)
-                    }))*/
                 }
             }
             result.onFailure {
@@ -86,7 +83,7 @@ class HomeUseCaseImpl @Inject constructor(private val repository: NetworkReposit
     override fun getCategories(): Flow<Result<List<String>>> = flow<Result<List<String>>> {
         val resultList = arrayListOf<String>()
         repository.getAllCategory()
-            .onSuccess {result ->
+            .onSuccess { result ->
                 result.forEach {
                     resultList.add(it.name)
                 }

@@ -89,9 +89,10 @@ class HomeScreen : Tab, AppScreen() {
 
         Surface(modifier = Modifier.fillMaxSize()) {
 
-//            val categories = foodsList.map { it.name }
 
-            LazyColumn(modifier = Modifier.fillMaxSize().background(Color(0xFFF4F4F4))) {
+            LazyColumn(modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0xFFF4F4F4))) {
                 item {
                     CustomSearchView(search = search) {
                         search = it
@@ -99,7 +100,6 @@ class HomeScreen : Tab, AppScreen() {
                     }
                 }
                 item {
-                    Log.d("AAAAA", uiState.categories.size.toString())
                     LazyRow(modifier = Modifier.padding(top = 8.dp)) {
                         item { Spacer(modifier = Modifier.width(10.dp)) }
                         items(uiState.categories.size) {
@@ -125,16 +125,24 @@ class HomeScreen : Tab, AppScreen() {
                                     ButtonDefaults.buttonColors(Color(0xFF9E9B9B))
                             ) {
                                 Text(text = uiState.categories[it])
-//                                Text(text = foodsList[it].name)
                             }
                         }
                     }
                 }
 
-                Log.d("TTT", "screen -> " + uiState.foods.toString())
                 items(uiState.foods) { categoryData ->
-                    Column(modifier = Modifier.padding(top = 16.dp).clip(RoundedCornerShape(12.dp)).background(Color.White)) {
-                        Text(text = categoryData.name, Modifier.padding(start = 10.dp, top = 10.dp), fontSize = 24.sp, fontWeight = FontWeight.Medium)
+                    Column(
+                        modifier = Modifier
+                            .padding(top = 16.dp)
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(Color.White)
+                    ) {
+                        Text(
+                            text = categoryData.name,
+                            Modifier.padding(start = 10.dp, top = 10.dp),
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Medium
+                        )
                         categoryData.items.forEach { it ->
                             FoodItem(foodData = it) {
                                 onEventDispatcher(HomeContact.Intent.OpenDetailsScreen(it))
@@ -142,7 +150,6 @@ class HomeScreen : Tab, AppScreen() {
                         }
                     }
                 }
-
             }
 
             if (uiState.foods.isEmpty()) {
