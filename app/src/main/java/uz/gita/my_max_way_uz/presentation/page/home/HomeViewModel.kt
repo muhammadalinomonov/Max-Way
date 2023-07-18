@@ -1,5 +1,6 @@
 package uz.gita.my_max_way_uz.presentation.page.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -42,7 +43,7 @@ class HomeViewModel @Inject constructor(
 
                     useCase.getCategories().onEach { result ->
                         result.onSuccess { list ->
-
+                            Log.d("YYY", list.toString())
                             uiState.update {
                                 it.copy(categories = list)
                             }
@@ -63,6 +64,7 @@ class HomeViewModel @Inject constructor(
             is HomeContact.Intent.SelectCategories -> {
                 useCase.getFoodsByCategory("", intent.list).onEach { result ->
                     result.onSuccess { list ->
+                        Log.d("YYY", "select" + list.toString())
                         uiState.update {
                             it.copy(foods = list)
                         }

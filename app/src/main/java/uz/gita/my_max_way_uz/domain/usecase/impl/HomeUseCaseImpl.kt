@@ -1,6 +1,6 @@
 package uz.gita.my_max_way_uz.domain.usecase.impl
 
-import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -16,7 +16,6 @@ class HomeUseCaseImpl @Inject constructor(private val repository: NetworkReposit
         lit: List<String>
     ): Flow<Result<List<CategoryData>>> =
         flow<Result<List<CategoryData>>> {
-
 
             val result = repository.getAllCategory()
             result.onSuccess { list ->
@@ -53,7 +52,7 @@ class HomeUseCaseImpl @Inject constructor(private val repository: NetworkReposit
                 emit(Result.failure(it))
             }
 
-        }.flowOn(IO)
+        }.flowOn(Default)
 
     override fun getFoodsBySearch(name: String): Flow<Result<List<CategoryData>>> =
         flow<Result<List<CategoryData>>> {
@@ -78,7 +77,7 @@ class HomeUseCaseImpl @Inject constructor(private val repository: NetworkReposit
                 }
 
             emit(Result.success(resultList))
-        }.flowOn(IO)
+        }.flowOn(Default)
 
     override fun getCategories(): Flow<Result<List<String>>> = flow<Result<List<String>>> {
         val resultList = arrayListOf<String>()
@@ -92,5 +91,5 @@ class HomeUseCaseImpl @Inject constructor(private val repository: NetworkReposit
                 emit(Result.failure(it))
             }
         emit(Result.success(resultList))
-    }.flowOn(IO)
+    }.flowOn(Default)
 }

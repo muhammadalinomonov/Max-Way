@@ -25,6 +25,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -33,7 +34,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.hilt.getViewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import uz.gita.my_max_way_uz.R
 import uz.gita.my_max_way_uz.data.model.FoodData
@@ -53,6 +54,8 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
         val viewModel: DetailsContract.ViewModel = getViewModel<DetailsViewModel>()
 
         val context = LocalContext.current
+
+        val uiState = viewModel.collectAsState()
         viewModel.collectSideEffect { sideEffect ->
             when (sideEffect) {
                 is DetailsContract.SideEffect.ShowSnackBar -> {
@@ -61,17 +64,34 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
                 }
             }
         }
-        DetailsScreenContent(viewModel::onEventDispatcher)
+        DetailsScreenContent(uiState, viewModel::onEventDispatcher)
 
     }
 
 
     @Composable
     private fun DetailsScreenContent(
+        uiState: State<DetailsContract.UiState>,
         onEventDispatcher: (DetailsContract.Intent) -> Unit
     ) {
         var count by remember {
             mutableStateOf(1)
+        }
+
+
+        var isHave by remember {
+            mutableStateOf(false)
+        }
+        when(val valueUiState = uiState.value){
+            is DetailsContract.UiState.CheckFood -> {
+                isHave = valueUiState.state
+            }
+            is DetailsContract.UiState.Count -> {
+
+            }
+            DetailsContract.UiState.Load -> {
+
+            }
         }
         Surface(modifier = Modifier.fillMaxSize()) {
             Column(modifier = Modifier.fillMaxSize()) {
@@ -202,7 +222,9 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
 
                 Button(
                     onClick = {
-                        onEventDispatcher(DetailsContract.Intent.AddToOrder(foodData, count))
+                        //todo
+                        onEventDispatcher(DetailsContract.Intent.OpenToBucketScreen)
+//                        onEventDispatcher(DetailsContract.Intent.AddToOrder(foodData, count))
                     },
                     modifier = Modifier
                         .fillMaxWidth()

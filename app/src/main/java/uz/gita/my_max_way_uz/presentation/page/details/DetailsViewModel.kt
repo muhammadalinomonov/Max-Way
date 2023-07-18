@@ -54,7 +54,16 @@ class DetailsViewModel @Inject constructor(
                     }
                 }
             }
+
+            DetailsContract.Intent.OpenToBucketScreen -> {
+                viewModelScope.launch {
+                    directions.openBasketScreen()
+                }
+            }
+
+            is DetailsContract.Intent.CheckFood -> {
+                intent { reduce { DetailsContract.UiState.CheckFood(useCase.checkFood(intent.foodEntity)) } }
+            }
         }
     }
-
 }

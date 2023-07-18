@@ -209,7 +209,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\TU
 	android:dataExtractionRules
 		ADDED from C:\Users\TUF\AndroidStudioProjects\MaxWay\app\src\main\AndroidManifest.xml:8:9-65
 	android:name
-		ADDED from C:\Users\TUF\AndroidStudioProjects\MaxWay\app\src\main\AndroidManifest.xml:6:9-48
+		ADDED from C:\Users\TUF\AndroidStudioProjects\MaxWay\app\src\main\AndroidManifest.xml:6:9-32
 activity#uz.gita.my_max_way_uz.MainActivity
 ADDED from C:\Users\TUF\AndroidStudioProjects\MaxWay\app\src\main\AndroidManifest.xml:16:9-26:20
 	android:label

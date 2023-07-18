@@ -46,7 +46,7 @@ val LightGrayColor = Color(0xFDB1664)
 @SuppressLint("ResourceAsColor")
 @Composable
 fun MaxWayTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = false,
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit

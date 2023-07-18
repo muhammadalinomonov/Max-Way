@@ -32,8 +32,8 @@ class NetworkRepositoryImpl @Inject constructor() : NetworkRepository {
                     val subCollection = it.reference.collection("items")
                         .get()
                         .await()
-                    subCollection.forEach {
-                        foodList.add(it.toObject(FoodData::class.java))
+                    subCollection.forEach { foodData ->
+                        foodList.add(foodData.toObject(FoodData::class.java))
                     }
 
                     resultList.add(

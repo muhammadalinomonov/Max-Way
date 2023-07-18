@@ -32,4 +32,7 @@ class RoomRepositoryImpl @Inject constructor(private val dao: FoodDao) : RoomRep
         dao.clearTable()
         emit(Unit)
     }.flowOn(Dispatchers.IO)
+
+    override fun checkFood(foodEntity: FoodEntity) =
+        dao.checkFood(foodEntity.name, foodEntity.count)
 }

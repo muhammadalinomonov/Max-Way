@@ -19,7 +19,7 @@
     <uses-permission android:name="uz.gita.my_max_way_uz.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
-        android:name="uz.gita.shop_app.app.App"
+        android:name="uz.gita.my_max_way_uz.app.App"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"

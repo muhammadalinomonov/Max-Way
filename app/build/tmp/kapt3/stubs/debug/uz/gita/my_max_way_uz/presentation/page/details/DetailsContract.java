@@ -5,7 +5,7 @@ import java.lang.System;
 @kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000\f\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0006\bf\u0018\u00002\u00020\u0001:\u0005\u0002\u0003\u0004\u0005\u0006\u00a8\u0006\u0007"}, d2 = {"Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract;", "", "Directions", "Intent", "SideEffect", "UiState", "ViewModel", "app_debug"})
 public abstract interface DetailsContract {
     
-    @kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000\u001a\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\bv\u0018\u00002\u00020\u0001:\u0003\u0002\u0003\u0004\u0082\u0001\u0003\u0005\u0006\u0007\u00a8\u0006\b"}, d2 = {"Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent;", "", "AddToOrder", "BackToHome", "ChangeCount", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent$AddToOrder;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent$BackToHome;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent$ChangeCount;", "app_debug"})
+    @kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000\"\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\bv\u0018\u00002\u00020\u0001:\u0005\u0002\u0003\u0004\u0005\u0006\u0082\u0001\u0005\u0007\b\t\n\u000b\u00a8\u0006\f"}, d2 = {"Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent;", "", "AddToOrder", "BackToHome", "ChangeCount", "CheckFood", "OpenToBucketScreen", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent$AddToOrder;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent$BackToHome;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent$ChangeCount;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent$CheckFood;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent$OpenToBucketScreen;", "app_debug"})
     public static abstract interface Intent {
         
         @kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000\f\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\b\u00c7\u0002\u0018\u00002\u00020\u0001B\u0007\b\u0002\u00a2\u0006\u0002\u0010\u0002\u00a8\u0006\u0003"}, d2 = {"Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent$BackToHome;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent;", "()V", "app_debug"})
@@ -118,9 +118,63 @@ public abstract interface DetailsContract {
                 return 0;
             }
         }
+        
+        @kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000\f\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\b\u00c7\u0002\u0018\u00002\u00020\u0001B\u0007\b\u0002\u00a2\u0006\u0002\u0010\u0002\u00a8\u0006\u0003"}, d2 = {"Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent$OpenToBucketScreen;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent;", "()V", "app_debug"})
+        public static final class OpenToBucketScreen implements uz.gita.my_max_way_uz.presentation.page.details.DetailsContract.Intent {
+            @org.jetbrains.annotations.NotNull
+            public static final uz.gita.my_max_way_uz.presentation.page.details.DetailsContract.Intent.OpenToBucketScreen INSTANCE = null;
+            
+            private OpenToBucketScreen() {
+                super();
+            }
+        }
+        
+        @kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000*\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0006\n\u0002\u0010\u000b\n\u0000\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u000e\n\u0000\b\u0087\b\u0018\u00002\u00020\u0001B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0004J\t\u0010\u0007\u001a\u00020\u0003H\u00c6\u0003J\u0013\u0010\b\u001a\u00020\u00002\b\b\u0002\u0010\u0002\u001a\u00020\u0003H\u00c6\u0001J\u0013\u0010\t\u001a\u00020\n2\b\u0010\u000b\u001a\u0004\u0018\u00010\fH\u00d6\u0003J\t\u0010\r\u001a\u00020\u000eH\u00d6\u0001J\t\u0010\u000f\u001a\u00020\u0010H\u00d6\u0001R\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0005\u0010\u0006\u00a8\u0006\u0011"}, d2 = {"Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent$CheckFood;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Intent;", "foodEntity", "Luz/gita/my_max_way_uz/data/source/local/room/entity/FoodEntity;", "(Luz/gita/my_max_way_uz/data/source/local/room/entity/FoodEntity;)V", "getFoodEntity", "()Luz/gita/my_max_way_uz/data/source/local/room/entity/FoodEntity;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "", "app_debug"})
+        public static final class CheckFood implements uz.gita.my_max_way_uz.presentation.page.details.DetailsContract.Intent {
+            @org.jetbrains.annotations.NotNull
+            private final uz.gita.my_max_way_uz.data.source.local.room.entity.FoodEntity foodEntity = null;
+            
+            @org.jetbrains.annotations.NotNull
+            public final uz.gita.my_max_way_uz.presentation.page.details.DetailsContract.Intent.CheckFood copy(@org.jetbrains.annotations.NotNull
+            uz.gita.my_max_way_uz.data.source.local.room.entity.FoodEntity foodEntity) {
+                return null;
+            }
+            
+            @java.lang.Override
+            public boolean equals(@org.jetbrains.annotations.Nullable
+            java.lang.Object other) {
+                return false;
+            }
+            
+            @java.lang.Override
+            public int hashCode() {
+                return 0;
+            }
+            
+            @org.jetbrains.annotations.NotNull
+            @java.lang.Override
+            public java.lang.String toString() {
+                return null;
+            }
+            
+            public CheckFood(@org.jetbrains.annotations.NotNull
+            uz.gita.my_max_way_uz.data.source.local.room.entity.FoodEntity foodEntity) {
+                super();
+            }
+            
+            @org.jetbrains.annotations.NotNull
+            public final uz.gita.my_max_way_uz.data.source.local.room.entity.FoodEntity component1() {
+                return null;
+            }
+            
+            @org.jetbrains.annotations.NotNull
+            public final uz.gita.my_max_way_uz.data.source.local.room.entity.FoodEntity getFoodEntity() {
+                return null;
+            }
+        }
     }
     
-    @kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000\u0016\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\bv\u0018\u00002\u00020\u0001:\u0002\u0002\u0003\u0082\u0001\u0002\u0004\u0005\u00a8\u0006\u0006"}, d2 = {"Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$UiState;", "", "Count", "Load", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$UiState$Count;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$UiState$Load;", "app_debug"})
+    @kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000\u001a\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\bv\u0018\u00002\u00020\u0001:\u0003\u0002\u0003\u0004\u0082\u0001\u0003\u0005\u0006\u0007\u00a8\u0006\b"}, d2 = {"Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$UiState;", "", "CheckFood", "Count", "Load", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$UiState$CheckFood;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$UiState$Count;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$UiState$Load;", "app_debug"})
     public static abstract interface UiState {
         
         @kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000\f\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\b\u00c7\u0002\u0018\u00002\u00020\u0001B\u0007\b\u0002\u00a2\u0006\u0002\u0010\u0002\u00a8\u0006\u0003"}, d2 = {"Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$UiState$Load;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$UiState;", "()V", "app_debug"})
@@ -130,6 +184,45 @@ public abstract interface DetailsContract {
             
             private Load() {
                 super();
+            }
+        }
+        
+        @kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000$\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0002\b\u0007\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u000e\n\u0000\b\u0087\b\u0018\u00002\u00020\u0001B\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0002\u0010\u0004J\t\u0010\u0007\u001a\u00020\u0003H\u00c6\u0003J\u0013\u0010\b\u001a\u00020\u00002\b\b\u0002\u0010\u0002\u001a\u00020\u0003H\u00c6\u0001J\u0013\u0010\t\u001a\u00020\u00032\b\u0010\n\u001a\u0004\u0018\u00010\u000bH\u00d6\u0003J\t\u0010\f\u001a\u00020\rH\u00d6\u0001J\t\u0010\u000e\u001a\u00020\u000fH\u00d6\u0001R\u0011\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0005\u0010\u0006\u00a8\u0006\u0010"}, d2 = {"Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$UiState$CheckFood;", "Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$UiState;", "state", "", "(Z)V", "getState", "()Z", "component1", "copy", "equals", "other", "", "hashCode", "", "toString", "", "app_debug"})
+        public static final class CheckFood implements uz.gita.my_max_way_uz.presentation.page.details.DetailsContract.UiState {
+            private final boolean state = false;
+            
+            @org.jetbrains.annotations.NotNull
+            public final uz.gita.my_max_way_uz.presentation.page.details.DetailsContract.UiState.CheckFood copy(boolean state) {
+                return null;
+            }
+            
+            @java.lang.Override
+            public boolean equals(@org.jetbrains.annotations.Nullable
+            java.lang.Object other) {
+                return false;
+            }
+            
+            @java.lang.Override
+            public int hashCode() {
+                return 0;
+            }
+            
+            @org.jetbrains.annotations.NotNull
+            @java.lang.Override
+            public java.lang.String toString() {
+                return null;
+            }
+            
+            public CheckFood(boolean state) {
+                super();
+            }
+            
+            public final boolean component1() {
+                return false;
+            }
+            
+            public final boolean getState() {
+                return false;
             }
         }
         
@@ -228,11 +321,15 @@ public abstract interface DetailsContract {
         uz.gita.my_max_way_uz.presentation.page.details.DetailsContract.Intent intent);
     }
     
-    @kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000\u0012\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0002\bf\u0018\u00002\u00020\u0001J\u0011\u0010\u0002\u001a\u00020\u0003H\u00a6@\u00f8\u0001\u0000\u00a2\u0006\u0002\u0010\u0004\u0082\u0002\u0004\n\u0002\b\u0019\u00a8\u0006\u0005"}, d2 = {"Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Directions;", "", "backToHome", "", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "app_debug"})
+    @kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000\u0012\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0003\bf\u0018\u00002\u00020\u0001J\u0011\u0010\u0002\u001a\u00020\u0003H\u00a6@\u00f8\u0001\u0000\u00a2\u0006\u0002\u0010\u0004J\u0011\u0010\u0005\u001a\u00020\u0003H\u00a6@\u00f8\u0001\u0000\u00a2\u0006\u0002\u0010\u0004\u0082\u0002\u0004\n\u0002\b\u0019\u00a8\u0006\u0006"}, d2 = {"Luz/gita/my_max_way_uz/presentation/page/details/DetailsContract$Directions;", "", "backToHome", "", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "openBasketScreen", "app_debug"})
     public static abstract interface Directions {
         
         @org.jetbrains.annotations.Nullable
         public abstract java.lang.Object backToHome(@org.jetbrains.annotations.NotNull
+        kotlin.coroutines.Continuation<? super kotlin.Unit> continuation);
+        
+        @org.jetbrains.annotations.Nullable
+        public abstract java.lang.Object openBasketScreen(@org.jetbrains.annotations.NotNull
         kotlin.coroutines.Continuation<? super kotlin.Unit> continuation);
     }
 }

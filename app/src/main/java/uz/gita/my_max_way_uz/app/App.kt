@@ -1,4 +1,4 @@
-package uz.gita.shop_app.app
+package uz.gita.my_max_way_uz.app
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -33,8 +33,8 @@
 20
 21    <application
 21-->C:\Users\TUF\AndroidStudioProjects\MaxWay\app\src\main\AndroidManifest.xml:5:5-27:19
-22        android:name="uz.gita.shop_app.app.App"
-22-->C:\Users\TUF\AndroidStudioProjects\MaxWay\app\src\main\AndroidManifest.xml:6:9-48
+22        android:name="uz.gita.my_max_way_uz.app.App"
+22-->C:\Users\TUF\AndroidStudioProjects\MaxWay\app\src\main\AndroidManifest.xml:6:9-32
 23        android:allowBackup="true"
 23-->C:\Users\TUF\AndroidStudioProjects\MaxWay\app\src\main\AndroidManifest.xml:7:9-35
 24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"

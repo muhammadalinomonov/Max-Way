@@ -221,6 +221,36 @@ public final class FoodDao_Impl implements FoodDao {
     });
   }
 
+  @Override
+  public boolean checkFood(final String name, final int count) {
+    final String _sql = "SELECT exists (SELECT * FROM foods where name = ? AND count = ?)";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 2);
+    int _argIndex = 1;
+    if (name == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, name);
+    }
+    _argIndex = 2;
+    _statement.bindLong(_argIndex, count);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final boolean _result;
+      if(_cursor.moveToFirst()) {
+        final int _tmp;
+        _tmp = _cursor.getInt(0);
+        _result = _tmp != 0;
+      } else {
+        _result = false;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();
   }
