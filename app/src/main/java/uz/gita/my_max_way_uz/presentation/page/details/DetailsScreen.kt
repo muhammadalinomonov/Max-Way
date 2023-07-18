@@ -223,8 +223,8 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
                 Button(
                     onClick = {
                         //todo
-                        onEventDispatcher(DetailsContract.Intent.OpenToBucketScreen)
-//                        onEventDispatcher(DetailsContract.Intent.AddToOrder(foodData, count))
+//                        onEventDispatcher(DetailsContract.Intent.OpenToBucketScreen)
+                        onEventDispatcher(DetailsContract.Intent.AddToOrder(foodData, count))
                     },
                     modifier = Modifier
                         .fillMaxWidth()
