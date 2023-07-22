@@ -10,5 +10,5 @@ interface RoomRepository {
     fun deleteOrder(foodEntity: FoodEntity)
     fun clearBasket(): Flow<Unit>
 
-    fun checkFood(foodEntity: FoodEntity):Boolean
+    fun checkFood(foodEntity: FoodEntity): Flow<FoodEntity?>
 }

@@ -26,6 +26,9 @@ interface FoodDao {
     @Query("DELETE  FROM foods")
     fun clearTable()
 
-    @Query("SELECT exists (SELECT * FROM foods where name = :name AND count = :count)")
-    fun checkFood(name: String, count: Int): Boolean
+    /*@Query("SELECT exists (SELECT * FROM foods where name = :name AND count = :count)")
+    fun checkFood(name: String, count: Int): Boolean*/
+    @Query("SELECT * FROM foods where name = :name AND count = :count")
+    fun checkFood(name: String, count:Int): Flow<FoodEntity?>
+
 }

@@ -222,8 +222,8 @@ public final class FoodDao_Impl implements FoodDao {
   }
 
   @Override
-  public boolean checkFood(final String name, final int count) {
-    final String _sql = "SELECT exists (SELECT * FROM foods where name = ? AND count = ?)";
+  public Flow<FoodEntity> checkFood(final String name, final int count) {
+    final String _sql = "SELECT * FROM foods where name = ? AND count = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 2);
     int _argIndex = 1;
     if (name == null) {
@@ -233,22 +233,58 @@ public final class FoodDao_Impl implements FoodDao {
     }
     _argIndex = 2;
     _statement.bindLong(_argIndex, count);
-    __db.assertNotSuspendingTransaction();
-    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
-    try {
-      final boolean _result;
-      if(_cursor.moveToFirst()) {
-        final int _tmp;
-        _tmp = _cursor.getInt(0);
-        _result = _tmp != 0;
-      } else {
-        _result = false;
+    return CoroutinesRoom.createFlow(__db, false, new String[]{"foods"}, new Callable<FoodEntity>() {
+      @Override
+      public FoodEntity call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
+          final int _cursorIndexOfPrice = CursorUtil.getColumnIndexOrThrow(_cursor, "price");
+          final int _cursorIndexOfCount = CursorUtil.getColumnIndexOrThrow(_cursor, "count");
+          final int _cursorIndexOfDescription = CursorUtil.getColumnIndexOrThrow(_cursor, "description");
+          final int _cursorIndexOfImageUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "imageUrl");
+          final FoodEntity _result;
+          if(_cursor.moveToFirst()) {
+            final long _tmpId;
+            _tmpId = _cursor.getLong(_cursorIndexOfId);
+            final String _tmpName;
+            if (_cursor.isNull(_cursorIndexOfName)) {
+              _tmpName = null;
+            } else {
+              _tmpName = _cursor.getString(_cursorIndexOfName);
+            }
+            final long _tmpPrice;
+            _tmpPrice = _cursor.getLong(_cursorIndexOfPrice);
+            final int _tmpCount;
+            _tmpCount = _cursor.getInt(_cursorIndexOfCount);
+            final String _tmpDescription;
+            if (_cursor.isNull(_cursorIndexOfDescription)) {
+              _tmpDescription = null;
+            } else {
+              _tmpDescription = _cursor.getString(_cursorIndexOfDescription);
+            }
+            final String _tmpImageUrl;
+            if (_cursor.isNull(_cursorIndexOfImageUrl)) {
+              _tmpImageUrl = null;
+            } else {
+              _tmpImageUrl = _cursor.getString(_cursorIndexOfImageUrl);
+            }
+            _result = new FoodEntity(_tmpId,_tmpName,_tmpPrice,_tmpCount,_tmpDescription,_tmpImageUrl);
+          } else {
+            _result = null;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
       }
-      return _result;
-    } finally {
-      _cursor.close();
-      _statement.release();
-    }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
   }
 
   public static List<Class<?>> getRequiredConverters() {

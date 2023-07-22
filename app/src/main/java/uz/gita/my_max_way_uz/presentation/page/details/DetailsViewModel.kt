@@ -62,7 +62,9 @@ class DetailsViewModel @Inject constructor(
             }
 
             is DetailsContract.Intent.CheckFood -> {
-                intent { reduce { DetailsContract.UiState.CheckFood(useCase.checkFood(intent.foodEntity)) } }
+                useCase.checkFood(intent.foodEntity.toFoodEntityData(intent.count, sharedPref.phone)).onEach {
+                    intent { reduce { DetailsContract.UiState.CheckFood(it) } }
+                }.launchIn(viewModelScope)
             }
         }
     }

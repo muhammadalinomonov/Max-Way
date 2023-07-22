@@ -34,6 +34,6 @@ class OrderUseCaseImpl @Inject constructor(
     override fun getOrderedFoods(userId: String): Flow<Result<List<OrderData>>> =
         repository.getOrderedFoods(userId)
 
-    override fun checkFood(foodEntity: FoodEntity): Boolean = roomRepository.checkFood(foodEntity)
+    override fun checkFood(foodEntity: FoodEntity): Flow<FoodEntity?> = roomRepository.checkFood(foodEntity)
 
 }

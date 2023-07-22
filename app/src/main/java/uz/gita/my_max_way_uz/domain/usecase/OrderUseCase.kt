@@ -12,5 +12,5 @@ interface OrderUseCase {
     fun getFoodsInBasket(): Flow<List<FoodEntity>>
     fun deleteOrder(foodEntity: FoodEntity): Flow<Unit>
     fun getOrderedFoods(userId: String): Flow<Result<List<OrderData>>>
-    fun checkFood(foodEntity: FoodEntity):Boolean
+    fun checkFood(foodEntity: FoodEntity): Flow<FoodEntity?>
 }

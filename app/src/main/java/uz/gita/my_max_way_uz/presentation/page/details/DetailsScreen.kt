@@ -1,5 +1,6 @@
 package uz.gita.my_max_way_uz.presentation.page.details
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -25,6 +26,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -64,6 +66,7 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
                 }
             }
         }
+        viewModel.onEventDispatcher(DetailsContract.Intent.CheckFood(foodData))
         DetailsScreenContent(uiState, viewModel::onEventDispatcher)
 
     }
@@ -77,21 +80,34 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
         var count by remember {
             mutableStateOf(1)
         }
+        var orderedCount = 0
 
 
         var isHave by remember {
             mutableStateOf(false)
         }
-        when(val valueUiState = uiState.value){
+        when (val valueUiState = uiState.value) {
             is DetailsContract.UiState.CheckFood -> {
-                isHave = valueUiState.state
+                if (valueUiState.foodEntity != null) {
+                    Log.d("TTT", valueUiState.foodEntity.toString())
+                    orderedCount = valueUiState.foodEntity.count
+
+                    Log.d("YYY", "orderedCount= $orderedCount")
+                }
+                isHave =
+                    valueUiState.foodEntity == null || (valueUiState.foodEntity.count == count)
             }
+
             is DetailsContract.UiState.Count -> {
 
             }
+
             DetailsContract.UiState.Load -> {
 
             }
+        }
+        LaunchedEffect(key1 = orderedCount) {
+            count = if (orderedCount != 0) orderedCount else 1
         }
         Surface(modifier = Modifier.fillMaxSize()) {
             Column(modifier = Modifier.fillMaxSize()) {
@@ -222,9 +238,15 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
 
                 Button(
                     onClick = {
-                        //todo
-//                        onEventDispatcher(DetailsContract.Intent.OpenToBucketScreen)
-                        onEventDispatcher(DetailsContract.Intent.AddToOrder(foodData, count))
+                        if (count == orderedCount)
+                            onEventDispatcher(DetailsContract.Intent.OpenToBucketScreen)
+                        else {
+                            onEventDispatcher(DetailsContract.Intent.AddToOrder(foodData, count))
+                            orderedCount = count
+                        }
+
+                        onEventDispatcher(DetailsContract.Intent.CheckFood(foodData, count))
+                        Log.d("TTT", "orderCount =  $orderedCount $foodData  $count ")
                     },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -235,7 +257,12 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
                     shape = MaterialTheme.shapes.small,
                     colors = ButtonDefaults.buttonColors(Color(0xFF51277D))
                 ) {
-                    Text(text = "Qo'shish", modifier = Modifier.align(Alignment.CenterVertically))
+                    Text(
+                        text = if (count != orderedCount) {
+                            "Qo'shish"
+                        } else "Savatga",
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
                 }
             }
 

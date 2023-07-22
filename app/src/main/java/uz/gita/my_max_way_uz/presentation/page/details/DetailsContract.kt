@@ -11,13 +11,13 @@ interface DetailsContract {
         data class AddToOrder(val food: FoodData, val count: Int) : Intent
         object OpenToBucketScreen : Intent
 
-        data class CheckFood(val foodEntity: FoodEntity) : Intent
+        data class CheckFood(val foodEntity: FoodData, val count: Int = 1) : Intent
     }
 
     sealed interface UiState {
         object Load : UiState
 
-        data class CheckFood(val state: Boolean) : UiState
+        data class CheckFood(val foodEntity: FoodEntity?) : UiState
         data class Count(val count: Int) : UiState
     }
 
