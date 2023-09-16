@@ -26,6 +26,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -74,6 +75,7 @@ class ProfileScreen : Tab, AppScreen() {
 
         val context = LocalContext.current
 
+
         onEventDispatcher(ProfileContact.Intent.Load)
         Surface(
             modifier = Modifier
@@ -95,11 +97,10 @@ class ProfileScreen : Tab, AppScreen() {
                 ) {
                     Text(
                         text = "Profil",
-                        modifier = Modifier
-                            .background(Color.White)
-                            .align(Alignment.CenterVertically),
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Medium
+                        modifier = Modifier,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        fontSize = 18.sp
                     )
                 }
 

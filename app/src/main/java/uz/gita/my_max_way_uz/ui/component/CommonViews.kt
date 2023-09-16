@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -36,16 +37,21 @@ fun CommonText(
 
 @Composable
 fun CommonLoginButton(
-    text: String, modifier: Modifier = Modifier, onClick: () -> Unit
+    text: String, enabled:Boolean,modifier: Modifier = Modifier, onClick: () -> Unit
 ) {
     Button(
+        enabled = enabled,
         modifier = modifier
             .background(
                 PinkColor, RoundedCornerShape(20.dp)
             )
-            .height(58.dp), colors = ButtonDefaults.buttonColors(
-            containerColor = Color.Transparent
-        ), onClick = { onClick() }, elevation = ButtonDefaults.buttonElevation(0.dp, 0.dp)
+            .height(58.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color.Transparent/*, disabledContentColor = Color.Gray*/, disabledContainerColor = Color.Gray
+        ),
+        onClick = { onClick() },
+        elevation = ButtonDefaults.buttonElevation(0.dp, 0.dp),
+        shape = RoundedCornerShape(8.dp)
     ) {
         Text(text = text, fontSize = 20.sp, color = Color.White)
     }
@@ -57,19 +63,22 @@ fun CommonTextField(
     text: String,
     placeholder: String,
     onValueChange: (String) -> Unit,
-    keyboardOptions: KeyboardOptions
+    keyboardOptions: KeyboardOptions,
+    visualTransformation: VisualTransformation = VisualTransformation.None
 ) {
     OutlinedTextField(
         value = text,
         onValueChange = { onValueChange(it) },
-        label = { Text(text = placeholder, color = LightGrayColor) },
+        label = { Text(text = placeholder, color = Color.Gray) },
         maxLines = 1,
         singleLine = true,
         keyboardOptions = keyboardOptions,
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = PinkColor, cursorColor = Color.Black
         ),
+
         shape = RoundedCornerShape(15.dp),
         modifier = Modifier.fillMaxWidth(),
+        visualTransformation = visualTransformation
     )
 }

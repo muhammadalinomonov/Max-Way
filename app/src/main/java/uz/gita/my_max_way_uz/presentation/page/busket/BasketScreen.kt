@@ -1,21 +1,23 @@
 package uz.gita.my_max_way_uz.presentation.page.busket
 
+import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,9 +41,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import cafe.adriel.voyager.hilt.getViewModel
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
@@ -118,7 +124,7 @@ class BasketScreen : Tab, AppScreen() {
 
         }
 
-        Scaffold(topBar = { TopBar(onEventDispatcher) }) {
+        Scaffold(topBar = { TopBar(uiState, onEventDispatcher) }) {
             Surface(
                 modifier = Modifier
                     .padding(it)
@@ -229,11 +235,26 @@ class BasketScreen : Tab, AppScreen() {
         }
     }
 
-    @Composable
-    fun TopBar(onEventDispatcher: (BasketContract.Intent) -> Unit) {
 
+    @SuppressLint("MutableCollectionMutableState")
+    @Composable
+    fun TopBar(
+        uiState: State<BasketContract.UiState>,
+        onEventDispatcher: (BasketContract.Intent) -> Unit
+    ) {
+
+        var list by remember {
+            mutableStateOf(listOf<FoodEntity>())
+        }
+        when (val value = uiState.value) {
+            is BasketContract.UiState.FoodsInBasket -> {
+                list = value.foods
+            }
+
+            BasketContract.UiState.Load -> {}
+        }
         var dialogState by remember { mutableStateOf(false) }
-        Surface(shadowElevation = 8.dp) {
+        Surface(shadowElevation = 2.dp) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -244,10 +265,12 @@ class BasketScreen : Tab, AppScreen() {
                 Text(
                     text = "Savatcha",
                     modifier = Modifier.align(Alignment.Center),
-                    fontWeight = FontWeight.Medium,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black,
                     fontSize = 18.sp
                 )
                 IconButton(
+                    enabled = list.isNotEmpty(),
                     onClick = { dialogState = true },
                     modifier = Modifier
                         .align(Alignment.CenterEnd)
@@ -258,30 +281,76 @@ class BasketScreen : Tab, AppScreen() {
             }
         }
         if (dialogState) {
-            AlertDialog(
-                onDismissRequest = { dialogState = false },
-                title = { Text(text = "Tozalash") },
-                text = { Text(text = "Rostandanham savatni tozalashni hohlaysizmi?") },
-                confirmButton = {
-                    Button(
-                        onClick = {
-                            onEventDispatcher(BasketContract.Intent.ClearBasket)
-                            dialogState = false
-                        },
-                        modifier = Modifier.padding(vertical = 8.dp)
+            Dialog(onDismissRequest = { dialogState = false }) {
+                Surface(
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color.White
+                ) {
+                    Box(
+                        contentAlignment = Alignment.Center
                     ) {
-                        Text(text = "Ha")
-                    }
-                },
-                dismissButton = {
-                    Button(
-                        onClick = { dialogState = false },
-                        modifier = Modifier.padding(vertical = 8.dp)
-                    ) {
-                        Text(text = "Yo'q")
+                        Column(
+                            modifier = Modifier.padding(20.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+
+
+                            Text(
+                                text = "Diqqat!",
+                                style = TextStyle(
+                                    fontSize = 24.sp,
+                                    fontFamily = FontFamily.Default,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Text(
+                                modifier = Modifier.padding(horizontal = 12.dp),
+                                text = "Haqiqatan ham savatchani bo'shatmoqchisiz?",
+                                fontSize = 14.sp,
+                                textAlign = TextAlign.Center
+                            )
+                            Spacer(modifier = Modifier.height(16.dp))
+
+
+                            Row(modifier = Modifier.fillMaxWidth()) {
+                                Button(
+                                    onClick = { dialogState = false },
+                                    shape = RoundedCornerShape(8.dp),
+                                    modifier = Modifier
+                                        .width(0.dp)
+                                        .weight(1f)
+                                        .height(50.dp)
+                                        .clip(RoundedCornerShape(4.dp)),
+                                    colors = ButtonDefaults.buttonColors(Color(0xFFE0DEDE))
+                                ) {
+                                    Text(text = "Bekor qilish", color = Color.Black)
+                                }
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Button(
+                                    onClick = {
+                                        onEventDispatcher(BasketContract.Intent.ClearBasket)
+                                        dialogState = false
+                                    },
+                                    shape = RoundedCornerShape(8.dp),
+                                    modifier = Modifier
+                                        .width(0.dp)
+                                        .weight(1f)
+                                        .height(50.dp)
+                                        .clip(RoundedCornerShape(4.dp)),
+                                    colors = ButtonDefaults.buttonColors(Color(0xFF50267D))
+                                ) {
+                                    Text(text = "Ha")
+                                }
+                            }
+                            Spacer(modifier = Modifier.height(0.dp))
+
+
+                        }
                     }
                 }
-            )
+            }
+
         }
     }
 
@@ -292,5 +361,4 @@ class BasketScreen : Tab, AppScreen() {
         }
         return amount
     }
-
 }

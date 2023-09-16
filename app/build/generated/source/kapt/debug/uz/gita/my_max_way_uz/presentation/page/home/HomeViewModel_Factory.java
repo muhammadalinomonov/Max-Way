@@ -6,7 +6,7 @@ import dagger.internal.Factory;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
 import javax.inject.Provider;
-import uz.gita.my_max_way_uz.domain.usecase.HomeUseCase;
+import uz.gita.my_max_way_uz.domain.repository.FoodRepository;
 
 @ScopeMetadata
 @QualifierMetadata
@@ -18,10 +18,10 @@ import uz.gita.my_max_way_uz.domain.usecase.HomeUseCase;
 public final class HomeViewModel_Factory implements Factory<HomeViewModel> {
   private final Provider<HomeContact.Directions> directionProvider;
 
-  private final Provider<HomeUseCase> useCaseProvider;
+  private final Provider<FoodRepository> useCaseProvider;
 
   public HomeViewModel_Factory(Provider<HomeContact.Directions> directionProvider,
-      Provider<HomeUseCase> useCaseProvider) {
+      Provider<FoodRepository> useCaseProvider) {
     this.directionProvider = directionProvider;
     this.useCaseProvider = useCaseProvider;
   }
@@ -32,11 +32,12 @@ public final class HomeViewModel_Factory implements Factory<HomeViewModel> {
   }
 
   public static HomeViewModel_Factory create(Provider<HomeContact.Directions> directionProvider,
-      Provider<HomeUseCase> useCaseProvider) {
+      Provider<FoodRepository> useCaseProvider) {
     return new HomeViewModel_Factory(directionProvider, useCaseProvider);
   }
 
-  public static HomeViewModel newInstance(HomeContact.Directions direction, HomeUseCase useCase) {
+  public static HomeViewModel newInstance(HomeContact.Directions direction,
+      FoodRepository useCase) {
     return new HomeViewModel(direction, useCase);
   }
 }

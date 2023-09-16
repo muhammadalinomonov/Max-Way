@@ -2,6 +2,9 @@ package uz.gita.my_max_way_uz.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +16,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class SharedPrefModule {
+class DatabaseModule {
 
     @Provides
     @Singleton
@@ -24,4 +27,10 @@ class SharedPrefModule {
     @Provides
     @Singleton
     fun providesMySharedPref(sh: SharedPreferences): SharedPref = SharedPrefImpl(sh)
+
+    @Provides
+    @Singleton
+    fun providesFirebaseDatabase(): FirebaseFirestore = Firebase.firestore
+
+
 }

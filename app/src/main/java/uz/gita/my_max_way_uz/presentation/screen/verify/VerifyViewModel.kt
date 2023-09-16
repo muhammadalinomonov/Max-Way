@@ -26,6 +26,7 @@ class VerifyViewModel @Inject constructor(
             is VerifyContract.Intent.SmsData -> {
                 repository.signWithCredential(intent.sms).onEach {
                     it.onSuccess {
+
                         intent {
                             sharedPref.hasToken = true
                             direction.openMainScreen()

@@ -2,6 +2,7 @@ package uz.gita.my_max_way_uz.presentation.page.orders
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -47,8 +48,8 @@ class OrdersScreen : Tab, AppScreen() {
     override val options: TabOptions
         @Composable
         get() {
-            val title = "Buyurtmalarim"
-            val icon = painterResource(id = R.drawable.bag2)
+            val title = "Buyurtmalar"
+            val icon = painterResource(id = R.drawable.ic_bag)
             return remember {
                 TabOptions(
                     index = 0u,
@@ -76,138 +77,150 @@ class OrdersScreen : Tab, AppScreen() {
         var orderList = arrayListOf<OrderData>()
         when (uiState.value) {
             OrdersContact.UiState.Load -> {
-
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(60.dp),
+                        strokeWidth = 8.dp,
+                        color = Color(0xFF50267D)
+                    )
+                }
             }
 
             is OrdersContact.UiState.Orders -> {
                 orderList =
                     (uiState.value as OrdersContact.UiState.Orders).orders as ArrayList<OrderData>
-            }
-        }
+                Scaffold(topBar = { TopAppBar() }) {
+                    Surface(
+                        Modifier
+                            .padding(it)
+                            .background(Color(0xFFF4F4F4))
+                            .fillMaxSize()
 
-        Scaffold(topBar = { TopAppBar() }) {
-            Surface(
-                Modifier
-                    .padding(it)
-                    .background(Color(0xFFF4F4F4))
-                    .fillMaxSize()
-
-            ) {
-                LazyColumn(
-                    Modifier
-                        .padding(top = 8.dp)
-                ) {
-                    items(orderList) {
-                        Surface(
-                            shadowElevation = 8.dp,
-                            modifier = Modifier
-                                .padding(vertical = 4.dp)
-                                .padding(horizontal = 8.dp)
-
+                    ) {
+                        LazyColumn(
+                            Modifier
+                                .padding(top = 8.dp)
                         ) {
-                            Column(
-                                horizontalAlignment = Alignment.End,
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(8.dp))
-                                    .background(Color.White)
+                            items(orderList) {
+                                Surface(
+                                    shadowElevation = 1.dp,
+                                    modifier = Modifier
+                                        .padding(vertical = 4.dp)
+                                        .padding(horizontal = 8.dp)
 
-                            ) {
-                                it.foods.forEach {
-
-                                    Row(
-                                        Modifier
-                                            .fillMaxWidth()
-                                            .padding(8.dp)
+                                ) {
+                                    Column(
+                                        horizontalAlignment = Alignment.End,
+                                        modifier = Modifier
                                             .clip(RoundedCornerShape(8.dp))
+                                            .background(Color.White)
+
                                     ) {
-                                        Text(
-                                            text = it.name,
-                                            modifier = Modifier.padding(start = 8.dp)
-                                        )
-                                        Text(
-                                            text = it.count.toString() + " ta",
-                                            modifier = Modifier.padding(start = 16.dp)
-                                        )
-                                        Spacer(
-                                            modifier = Modifier
-                                                .width(0.dp)
-                                                .weight(1f)
-                                        )
-                                        Text(text = (it.count * it.price).toString())
+                                        it.foods.forEach {
+                                            Row(
+                                                Modifier
+                                                    .fillMaxWidth()
+                                                    .padding(8.dp)
+                                                    .clip(RoundedCornerShape(8.dp))
+                                            ) {
+                                                Text(
+                                                    text = it.name,
+                                                    fontSize = 16.sp,
+                                                    fontWeight = FontWeight(400),
+                                                    modifier = Modifier.padding(start = 8.dp)
+                                                )
+                                                Text(
+                                                    text = it.count.toString() + " ta",
+                                                    modifier = Modifier.padding(start = 16.dp)
+                                                )
+                                                Spacer(
+                                                    modifier = Modifier
+                                                        .width(0.dp)
+                                                        .weight(1f)
+                                                )
+                                                Text(text = (it.count * it.price).toString())
+                                            }
+                                        }
+
+                                        if (it.comment.isNotEmpty()) {
+                                            Text(
+                                                text = "Izoh: ${it.comment}",
+                                                modifier = Modifier
+                                                    .align(Alignment.Start)
+                                                    .padding(top = 8.dp)
+                                                    .padding(horizontal = 16.dp)
+                                            )
+                                        }
+                                        Spacer(modifier = Modifier.height(16.dp))
+                                        Row(horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(start = 16.dp)) {
+                                            Text(text = "Umumiy Summa:", fontWeight = FontWeight.Medium, fontSize = 16.sp, color = Color(0xFF50267D))
+
+                                            Button(
+                                                onClick = { },
+                                                shape = RoundedCornerShape(8.dp),
+                                                modifier = Modifier.padding(
+                                                    bottom = 8.dp,
+                                                    end = 8.dp,
+                                                    top = 8.dp
+                                                ),
+                                                colors = ButtonDefaults.buttonColors(Color(0xFF50267D))
+                                            ) {
+                                                Text(
+                                                    text = "${it.allPrice} so'm",
+                                                    Modifier,
+                                                    color = Color.White
+                                                )
+                                            }
+                                        }
                                     }
                                 }
 
-                                if (it.comment.isNotEmpty()) {
-                                    Text(
-                                        text = "Izoh: ${it.comment}",
-                                        modifier = Modifier
-                                            .align(Alignment.Start)
-                                            .padding(top = 8.dp)
-                                            .padding(horizontal = 16.dp)
-                                    )
-                                }
-                                Button(
-                                    onClick = { },
-                                    modifier = Modifier.padding(
-                                        bottom = 8.dp,
-                                        end = 8.dp,
-                                        top = 8.dp
-                                    ),
-                                    colors = ButtonDefaults.buttonColors(Color(0xFF50267D))
-                                ) {
-                                    Text(
-                                        text = "${it.allPrice} so'm",
-                                        Modifier,
-                                        color = Color.White
-                                    )
-                                }
                             }
                         }
+                        if (orderList.isEmpty()) {
 
+                            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                                CircularProgressIndicator(
+                                    modifier = Modifier.size(60.dp),
+                                    strokeWidth = 8.dp,
+                                    color = Color(0xFF50267D)
+                                )
+                            }
+                        }
                     }
-                }
-                if (orderList.isEmpty()) {
 
-                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.size(60.dp),
-                            strokeWidth = 8.dp,
-                            color = Color(0xFF50267D)
-                        )
-                    }
-                }
-            }
-
-            if (orderList.isEmpty()) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(Color.White)
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .align(Alignment.Center),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.empty),
-                            contentDescription = null,
+                    if (orderList.isEmpty()) {
+                        Box(
                             modifier = Modifier
-                                .size(150.dp)
-                        )
-                        Text(text = "Buyurtma mavjud emas", modifier = Modifier, color = Color.Gray, fontSize = 12.sp, textAlign = TextAlign.Center)
+                                .fillMaxSize()
+                                .background(Color.White)
+                        ) {
+                            Column(
+                                modifier = Modifier
+                                    .align(Alignment.Center),
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                Image(
+                                    painter = painterResource(id = R.drawable.order_list),
+                                    contentDescription = null,
+                                    modifier = Modifier
+                                        .size(150.dp)
+                                )
+                                Text(text = "Buyurtma mavjud emas", modifier = Modifier, color = Color.Gray, fontSize = 12.sp, textAlign = TextAlign.Center)
+                            }
+                        }
                     }
-
-
                 }
             }
         }
+
+
     }
 
 
     @Composable
     fun TopAppBar() {
-        Surface(shadowElevation = 8.dp, modifier = Modifier.height(56.dp)) {
+        Surface(shadowElevation = 2.dp, modifier = Modifier.height(56.dp)) {
             Box(
                 modifier = Modifier
                     .height(56.dp)
@@ -216,7 +229,8 @@ class OrdersScreen : Tab, AppScreen() {
                 Text(
                     text = "Buyurtmalarim",
                     modifier = Modifier.align(Alignment.Center),
-                    fontWeight = FontWeight.Medium,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black,
                     fontSize = 18.sp
                 )
             }

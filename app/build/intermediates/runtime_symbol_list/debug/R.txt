@@ -9,6 +9,7 @@ int attr alpha 0x7f030000
 int attr buttonSize 0x7f030001
 int attr circleCrop 0x7f030002
 int attr colorScheme 0x7f030003
+int attr css 0x7f030017
 int attr font 0x7f030004
 int attr fontProviderAuthority 0x7f030005
 int attr fontProviderCerts 0x7f030006
@@ -27,6 +28,7 @@ int attr nestedScrollViewStyle 0x7f030012
 int attr queryPatterns 0x7f030013
 int attr scopeUris 0x7f030014
 int attr shortcutMatchRequired 0x7f030015
+int attr svg 0x7f030018
 int attr ttcIndex 0x7f030016
 int color androidx_core_ripple_material_light 0x7f040000
 int color androidx_core_secondary_text_default_material_light 0x7f040001
@@ -113,6 +115,7 @@ int drawable empty 0x7f06001d
 int drawable foof_placeholder 0x7f06001e
 int drawable googleg_disabled_color_18 0x7f06001f
 int drawable googleg_standard_color_18 0x7f060020
+int drawable ic_bag 0x7f06003e
 int drawable ic_buy 0x7f060021
 int drawable ic_buy_fill 0x7f060022
 int drawable ic_calendar 0x7f060023
@@ -122,8 +125,10 @@ int drawable ic_launcher_background 0x7f060026
 int drawable ic_launcher_foreground 0x7f060027
 int drawable ic_loaction_2 0x7f060028
 int drawable ic_next 0x7f060029
+int drawable ic_not_found 0x7f06003c
 int drawable ic_profile 0x7f06002a
 int drawable ic_profile_fill 0x7f06002b
+int drawable ic_search 0x7f06003f
 int drawable minus 0x7f06002c
 int drawable notification_action_background 0x7f06002d
 int drawable notification_bg 0x7f06002e
@@ -137,6 +142,7 @@ int drawable notification_template_icon_bg 0x7f060035
 int drawable notification_template_icon_low_bg 0x7f060036
 int drawable notification_tile_bg 0x7f060037
 int drawable notify_panel_notification_icon_bg 0x7f060038
+int drawable order_list 0x7f06003d
 int drawable plus 0x7f060039
 int drawable splash 0x7f06003a
 int drawable unnamed 0x7f06003b
@@ -391,6 +397,9 @@ int[] styleable LoadingImageView { 0x7f030002, 0x7f03000f, 0x7f030010 }
 int styleable LoadingImageView_circleCrop 0
 int styleable LoadingImageView_imageAspectRatio 1
 int styleable LoadingImageView_imageAspectRatioAdjust 2
+int[] styleable SVGImageView { 0x7f030017, 0x7f030018 }
+int styleable SVGImageView_css 0
+int styleable SVGImageView_svg 1
 int[] styleable SignInButton { 0x7f030001, 0x7f030003, 0x7f030014 }
 int styleable SignInButton_buttonSize 0
 int styleable SignInButton_colorScheme 1

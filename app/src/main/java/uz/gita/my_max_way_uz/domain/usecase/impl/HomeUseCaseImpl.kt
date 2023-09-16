@@ -1,5 +1,6 @@
 package uz.gita.my_max_way_uz.domain.usecase.impl
 
+import android.util.Log
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -16,7 +17,6 @@ class HomeUseCaseImpl @Inject constructor(private val repository: NetworkReposit
         lit: List<String>
     ): Flow<Result<List<CategoryData>>> =
         flow<Result<List<CategoryData>>> {
-
             val result = repository.getAllCategory()
             result.onSuccess { list ->
                 val resultList = arrayListOf<CategoryData>()

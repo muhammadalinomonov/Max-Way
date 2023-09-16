@@ -63,7 +63,7 @@ fun VerifyScreenContent(
             verticalArrangement = Arrangement.Center
         ) {
             CommonText(
-                text = "Enter SMS code,",
+                text = "SMS kodni kiriting",
                 fontSize = 34.sp,
                 fontWeight = FontWeight.Normal
             ) {}
@@ -77,7 +77,7 @@ fun VerifyScreenContent(
 
             Spacer(modifier = Modifier.height(130.dp))
 
-            CommonLoginButton(text = "Next", modifier = Modifier.fillMaxWidth()) {
+            CommonLoginButton(text = "Tasdiqlash", smsCode.length == 6,modifier = Modifier.fillMaxWidth()) {
                 if (smsCode.isNotEmpty()) {
 
                     onEventDispatcher(VerifyContract.Intent.SmsData(smsCode))

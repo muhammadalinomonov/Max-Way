@@ -61,7 +61,6 @@ class DetailsScreen(private val foodData: FoodData) : AppScreen() {
         viewModel.collectSideEffect { sideEffect ->
             when (sideEffect) {
                 is DetailsContract.SideEffect.ShowSnackBar -> {
-                    //todo show snackbar
                     Toast.makeText(context, sideEffect.message, Toast.LENGTH_SHORT).show()
                 }
             }

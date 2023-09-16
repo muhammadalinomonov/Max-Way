@@ -9,6 +9,7 @@ interface LoginContract {
     }
 
     sealed interface UiState {
+        data class Load(val loading:Boolean = false):UiState
         object Default : UiState
     }
 

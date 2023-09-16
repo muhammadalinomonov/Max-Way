@@ -10,6 +10,7 @@ attr alpha
 attr buttonSize
 attr circleCrop
 attr colorScheme
+attr css
 attr font
 attr fontProviderAuthority
 attr fontProviderCerts
@@ -28,6 +29,7 @@ attr nestedScrollViewStyle
 attr queryPatterns
 attr scopeUris
 attr shortcutMatchRequired
+attr svg
 attr ttcIndex
 color androidx_core_ripple_material_light
 color androidx_core_secondary_text_default_material_light
@@ -114,6 +116,7 @@ drawable empty
 drawable foof_placeholder
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable ic_bag
 drawable ic_buy
 drawable ic_buy_fill
 drawable ic_calendar
@@ -123,8 +126,10 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_loaction_2
 drawable ic_next
+drawable ic_not_found
 drawable ic_profile
 drawable ic_profile_fill
+drawable ic_search
 drawable minus
 drawable notification_action_background
 drawable notification_bg
@@ -138,6 +143,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable order_list
 drawable plus
 drawable splash
 drawable unnamed
@@ -334,6 +340,7 @@ styleable FragmentContainerView android_name android_tag
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
+styleable SVGImageView css svg
 styleable SignInButton buttonSize colorScheme scopeUris
 styleable StateListDrawable android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable StateListDrawableItem android_drawable

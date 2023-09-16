@@ -15,6 +15,7 @@ interface HomeContact {
     }
 
     data class UiState(
+        val isLoading:Boolean = true,
         val foods: List<CategoryData> = emptyList(),
         val categories: List<String> = emptyList()
     )

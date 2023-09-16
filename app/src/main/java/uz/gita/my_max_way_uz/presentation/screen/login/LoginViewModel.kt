@@ -5,8 +5,10 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.postSideEffect
+import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
 import uz.gita.my_max_way_uz.data.source.local.sharedpref.SharedPref
 import uz.gita.my_max_way_uz.domain.repository.AuthRepository
@@ -29,10 +31,15 @@ class LoginViewModel @Inject constructor(
 
             is LoginContract.Intent.LoginData -> {
                 repository.sendSms(intent.phone, intent.activity)
+                    .onStart {
+                        intent{
+                            reduce { LoginContract.UiState.Load(true) }
+                        }
+                    }
                     .onEach {
                         it.onSuccess {
                             sharedPref.phone = intent.phone
-                            sharedPref.hasToken = true
+                            sharedPref.name = intent.name
                             myLog("on success in view model")
                             direction.openVerifyScreen()
                         }

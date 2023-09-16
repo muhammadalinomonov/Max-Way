@@ -20,16 +20,14 @@ class SplashViewModel @Inject constructor(
 
     private fun openNextScreen() {
         viewModelScope.launch {
-
-            //todo
             delay(1500)
 
-            direction.openMainScreen()
-            /*if (sharedPref.hasToken) {
+
+            if (sharedPref.hasToken) {
                 direction.openMainScreen()
             } else {
                 direction.openLoginScreen()
-            }*/
+            }
         }
     }
 }

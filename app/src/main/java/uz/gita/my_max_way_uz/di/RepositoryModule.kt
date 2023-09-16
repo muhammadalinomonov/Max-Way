@@ -5,10 +5,12 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import uz.gita.my_max_way_uz.domain.repository.AuthRepository
+import uz.gita.my_max_way_uz.domain.repository.FoodRepository
 import uz.gita.my_max_way_uz.domain.repository.NetworkRepository
 import uz.gita.my_max_way_uz.domain.repository.OrderRepository
 import uz.gita.my_max_way_uz.domain.repository.RoomRepository
 import uz.gita.my_max_way_uz.domain.repository.impl.AuthRepositoryImpl
+import uz.gita.my_max_way_uz.domain.repository.impl.FoodRepositoryImpl
 import uz.gita.my_max_way_uz.domain.repository.impl.NetworkRepositoryImpl
 import uz.gita.my_max_way_uz.domain.repository.impl.OrderRepositoryImpl
 import uz.gita.my_max_way_uz.domain.repository.impl.RoomRepositoryImpl
@@ -32,6 +34,12 @@ interface RepositoryModule {
     @Binds
     @Singleton
     fun bindRoomRepo(impl: RoomRepositoryImpl): RoomRepository
+
+    @Binds
+    @Singleton
+    fun bindFoodsRepo(impl: FoodRepositoryImpl): FoodRepository
+
+
 
 
 

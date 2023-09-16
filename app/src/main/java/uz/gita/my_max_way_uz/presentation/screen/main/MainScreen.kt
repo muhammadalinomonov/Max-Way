@@ -39,8 +39,6 @@ class MainScreen(private val defaultScreen: Tab = HomeScreen()) : AppScreen() {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-
-
     override fun Content() {
 
         val viewModel: MainScreenContract.ViewModel = getViewModel<MainScreenViewModel>()

@@ -16,6 +16,7 @@ drawable bottom_menu_home
 drawable bottom_menu_profile
 drawable empty
 drawable foof_placeholder
+drawable ic_bag
 drawable ic_buy
 drawable ic_buy_fill
 drawable ic_calendar
@@ -25,9 +26,12 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_loaction_2
 drawable ic_next
+drawable ic_not_found
 drawable ic_profile
 drawable ic_profile_fill
+drawable ic_search
 drawable minus
+drawable order_list
 drawable plus
 drawable splash
 drawable unnamed

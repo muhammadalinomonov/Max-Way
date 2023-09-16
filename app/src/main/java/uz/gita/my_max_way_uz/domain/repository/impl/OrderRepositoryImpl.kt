@@ -19,8 +19,7 @@ class OrderRepositoryImpl @Inject constructor() : OrderRepository {
     private val db = Firebase.firestore
     override fun addOrder(orderData: OrderData): Flow<Result<String>> =
         callbackFlow {
-            Log.d("TTTT", orderData.allPrice.toString())
-            var isHave = false
+
             val a = db.collection("orders")
                 .get()
                 .await()
@@ -35,7 +34,7 @@ class OrderRepositoryImpl @Inject constructor() : OrderRepository {
 
                 }
             }*/
-            if (!isHave) {
+
                 var documentId: String
                 db.collection("orders")
                     .add(
@@ -67,7 +66,7 @@ class OrderRepositoryImpl @Inject constructor() : OrderRepository {
                         }
                     }
                 }
-            }
+
 
             trySend(Result.success("Buyurtmangiz do'konga yetib bordi"))
             awaitClose()

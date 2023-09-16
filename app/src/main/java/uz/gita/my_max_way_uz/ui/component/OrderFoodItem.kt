@@ -28,17 +28,18 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import uz.gita.my_max_way_uz.R
 import uz.gita.my_max_way_uz.data.source.local.room.entity.FoodEntity
 import uz.gita.my_max_way_uz.presentation.page.busket.BasketContract
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun OrderFoodItem(foodData: FoodEntity, onEventDispatcher: (BasketContract.Intent) -> Unit) {
     var count by remember {
@@ -53,19 +54,20 @@ fun OrderFoodItem(foodData: FoodEntity, onEventDispatcher: (BasketContract.Inten
         shadowElevation = 1.dp
     ) {
         Row(modifier = Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceBetween) {
-            AsyncImage(
+
+            GlideImage(
                 modifier = Modifier
                     .fillMaxHeight()
+
                     .width(100.dp)
-                    .padding(vertical = 16.dp)
-                    .clip(RoundedCornerShape(4.dp))
+                    .padding(vertical = 0.dp)
+                    .clip(RoundedCornerShape(16.dp))
                     .align(CenterVertically),
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(foodData.imageUrl)
-                    .crossfade(true)
-                    .build(),
-                placeholder = painterResource(id = R.drawable.foof_placeholder),
-                error = painterResource(id = R.drawable.foof_placeholder),
+
+                model = foodData.imageUrl,
+                contentScale = ContentScale.Crop,
+                /*placeholder = painterResource(id = R.drawable.foof_placeholder),
+                error = painterResource(id = R.drawable.foof_placeholder),*/
                 contentDescription = null
             )
 

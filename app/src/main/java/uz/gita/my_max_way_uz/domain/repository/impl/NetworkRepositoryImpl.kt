@@ -1,7 +1,6 @@
 package uz.gita.my_max_way_uz.domain.repository.impl
 
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
@@ -10,14 +9,12 @@ import uz.gita.my_max_way_uz.data.model.FoodData
 import uz.gita.my_max_way_uz.domain.repository.NetworkRepository
 import javax.inject.Inject
 
-class NetworkRepositoryImpl @Inject constructor() : NetworkRepository {
-
-    private val db = Firebase.firestore
+class NetworkRepositoryImpl @Inject constructor(private val db: FirebaseFirestore) :
+    NetworkRepository {
 
 
     override suspend fun getAllCategory(): Result<List<CategoryData>> =
         withContext(Dispatchers.IO) {
-
 
             try {
                 val a = db.collection("category")
